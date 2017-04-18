@@ -14,7 +14,11 @@ class Product extends React.Component {
     super();
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      activeEmblem: {
+        color: 'White',
+        id: '1801'
+      }
     }
 
     this.openModal = this.openModal.bind(this);
@@ -56,6 +60,21 @@ class Product extends React.Component {
     this.dispatch(productActions.updateActiveProductOptions(this.product.options));
   }
 
+  handleWishboneColorChange(value) {
+    this.product.options.filter((option) => {
+      return option.name === optionName;
+    })[0].selected = value;
+
+    console.log('changing wishbone color to: ', value);
+  }
+
+  handleEmblemChange(emblem) {
+    this.setState({
+      activeEmblem: emblem
+    });
+  }
+
+
   render() {
     let activeProduct;
     activeProduct = this.product;
@@ -84,6 +103,23 @@ class Product extends React.Component {
             })}
           </div>
         )
+      };
+
+      let renderEmblemColors = () => {
+        let emblems = [
+          {'color': 'Black', 'id': '1800'},
+          {'color': 'White', 'id': '1801'}
+        ];
+        return (
+          <div className="emblem-colors">
+            <h6>Wishbone:</h6>
+            {emblems.map((value, index) => {
+              return (
+                <div key={index} onClick={() => this.handleEmblemChange(value)} className={`emblem-color emblem-color__${value.color}`}></div>
+              )
+            })}
+          </div>
+        )
       }
 
       let renderSizes = () => {
@@ -99,8 +135,7 @@ class Product extends React.Component {
                         className={`product-size ${option.selected === value ? 'selected' : ''}`}
                         onClick={() => {
                           this.handleOptionChange(option.name, value);
-                        }}
-                      >
+                      }}>
                         {value}
                       </li>);
                   })}
@@ -118,14 +153,10 @@ class Product extends React.Component {
           <div className="row">
             <div className="small-12 medium-8 column">
               <button onClick={browserHistory.goBack} className="button hollow">&lsaquo; Back to products</button>
-              <p className="text-center"><img src={selectedVariantImage.src} alt="" /></p>
-              {/* <p>Current options:</p> */}
-              {/* {options.map(option => {
-                return <p>{option.name}</p>
-              })}
-              {images.map(image => {
-                return <img key={image.id} height="50" width="50" src={image.src} alt="" />
-              })} */}
+              <div className="active-product-image">
+                <img src={selectedVariantImage.src} alt="" />
+                <div className="active-product-image__emblem"><img src={`/images/wishbones/Wishbone_${this.state.activeEmblem.id}_${this.state.activeEmblem.color}.png`} alt="Emblem color" /></div>
+              </div>
             </div>
             <div className="small-12 medium-4 column">
               <h1 className="product-title">{title}</h1>
@@ -138,10 +169,7 @@ class Product extends React.Component {
 
                 {renderOptions()}
 
-                {/* <div className="product-style">
-                  <input type="text" placeholder="Select style" />
-                  <button type="submit" className="product-style__button"><i className="fa fa-caret-right"></i></button>
-                </div> */}
+                {renderEmblemColors()}
 
                 {renderSizes()}
 

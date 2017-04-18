@@ -1,4 +1,4 @@
-.page-product{
+.page-hat{
   .product-title{
     text-transform: uppercase;
     color: $grey40;
@@ -86,6 +86,33 @@
           text-decoration: underline;
         }
       }
+    }
+  }
+
+  .emblem-colors{
+    display: flex;
+    justify-content: space-between;
+    .emblem-color{
+      width: rem-calc(30);
+      height: rem-calc(30);
+      border-radius: 50%;
+      &.emblem-color__White{
+        background-color: $white;
+        border: 1px solid $black;
+      }
+      &.emblem-color__Black{
+        background-color: $black;
+      }
+    }
+  }
+
+  .active-product-image{
+    position: relative;
+    .active-product-image__emblem{
+      position: absolute;
+      width: rem-calc(128);
+      top: rem-calc(250);
+      left: rem-calc(250);
     }
   }
 }
