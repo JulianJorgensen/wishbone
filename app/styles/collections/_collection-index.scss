@@ -1,2 +1,248 @@
-.product-index{
+.page-hat{
+  .collection-title{
+    text-transform: uppercase;
+    color: $grey40;
+    font-weight: bold;
+    font-size: rem-calc(30);
+  }
+
+  .collection-info{
+    // product styles
+    .product-style{
+      @include flex();
+      margin-bottom: rem-calc(15);
+      .product-style__button{
+        background-color: $primary-color;
+        width: rem-calc(60);
+        color: $white;
+        font-size: rem-calc(26);
+      }
+      input{
+        margin-bottom: 0;
+      }
+    }
+
+    // product sizes
+    .product-sizes{
+      @include flex();
+      justify-content: space-between;
+      list-style-type: none;
+      margin: 0 0 rem-calc(15) 0;
+      .product-size{
+        flex-basis: auto;
+        border: 1px solid $grey70;
+        padding: rem-calc(5 10);
+        cursor: pointer;
+        &:hover{
+          background-color: $grey90;
+        }
+        &.selected{
+          background-color: $grey70;
+        }
+      }
+    }
+
+    // product price
+    .product-price{
+      color: $primary-color;
+      font-size: rem-calc(25);
+      font-weight: bold;
+      margin-bottom: rem-calc(30);
+    }
+
+    .charities-wrapper{
+      margin-bottom: rem-calc(15);
+      .charities{
+        .charity{
+          display: flex;
+          color: $grey40;
+          text-transform: uppercase;
+          cursor: pointer;
+          font-size: rem-calc(12);
+          margin-bottom: rem-calc(5);
+          &:before{
+            content: '';
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 1px solid $grey40;
+            margin-right: rem-calc(8);
+          }
+          &.active{
+            color: $black;
+            &:before{
+              border: 1px solid $blue;
+              background-color: $blue;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .description{
+    margin-bottom: rem-calc(20);
+    ul{
+      list-style-position: outside;
+    }
+  }
+
+  .products{
+    margin-bottom: rem-calc(20);
+    .option-colors{
+      background: url('/images/hat-icon.png') 0 center no-repeat;
+    }
+  }
+
+  .emblem-colors{
+    margin-bottom: rem-calc(20);
+    .option-colors{
+      background: url('/images/wishbone-icon.png') 0 center no-repeat;
+    }
+  }
+
+  .collection__subheadline{
+    font-weight: bold;
+    color: $grey40;
+    font-size: rem-calc(13);
+  }
+
+  .option-colors{
+    padding-left: rem-calc(45);
+    .option-color{
+      position: relative;
+      display: inline-block;
+      width: rem-calc(20);
+      height: rem-calc(20);
+      margin-right: rem-calc(5);
+      border-radius: 50%;
+      cursor: pointer;
+      &:before{
+        content: '';
+        position: absolute;
+        height: inherit;
+        width: 50%;
+        border-top-left-radius: rem-calc(20);
+        border-bottom-left-radius: rem-calc(20);
+      }
+
+      &.option-color__white{
+        background-color: $white;
+        border: 1px dashed $black;
+      }
+      &.option-color__black{
+        background-color: $black;
+      }
+      &.option-color__charcoal{
+        background-color: $charcoal;
+      }
+      &.option-color__old-gold{
+        background-color: $old-gold;
+      }
+      &.option-color__gold{
+        background-color: $gold;
+      }
+      &.option-color__orange{
+        background-color: $orange;
+      }
+      &.option-color__flamingo{
+        background-color: $flamingo;
+      }
+      &.option-color__bright-pink{
+        background-color: $bright-pink;
+      }
+      &.option-color__aqua-teal{
+        background-color: $aqua-teal;
+      }
+      &.option-color__royal{
+        background-color: $royal-blue;
+      }
+      &.option-color__royal-blue{
+        background-color: $royal-blue;
+      }
+      &.option-color__navy{
+        background-color: $navy-blue;
+      }
+      &.option-color__carolina-blue{
+        background-color: $carolina-blue;
+      }
+      &.option-color__grey{
+        background-color: $grey;
+      }
+      &.option-color__stone{
+        background-color: $stone;
+      }
+      &.option-color__kelly-green{
+        background-color: $kelly-green;
+      }
+      &.option-color__kiwi-green{
+        background-color: $kiwi-green;
+      }
+      &.option-color__forest-green{
+        background-color: $forest-green;
+      }
+      &.option-color__maroon{
+        background-color: $maroon;
+      }
+      &.option-color__red{
+        background-color: $red;
+      }
+      &.option-color__purple{
+        background-color: $purple;
+      }
+      &.option-color__royal_white{
+        background-color: $royal-blue;
+        &:before{
+          background-color: $white;
+        }
+      }
+      &.option-color__red_white{
+        background-color: $red;
+        &:before{
+          background-color: $white;
+        }
+      }
+      &.option-color__navy_white{
+        background-color: $navy-blue;
+        &:before{
+          background-color: $white;
+        }
+      }
+      &.option-color__kelly-green_white{
+        background-color: $kelly-green;
+        &:before{
+          background-color: $white;
+        }
+      }
+      &.option-color__black_white{
+        background-color: $black;
+        &:before{
+          background-color: $white;
+        }
+      }
+      &.option-color__white_black{
+        background-color: $white;
+        &:before{
+          background-color: $black;
+        }
+      }
+    }
+  }
+
+  .active-product-image{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .loader{
+      position: absolute;
+      color: $white;
+      min-height: auto;
+      height: rem-calc(100);
+      width: rem-calc(100);
+      background-color: rgba($black, 0.5);
+      border-radius: rem-calc(10);
+    }
+  }
 }

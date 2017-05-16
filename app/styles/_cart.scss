@@ -214,3 +214,10 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 16px;
   color: black;
 }
+
+.cart-item__remove{
+  text-transform: uppercase;
+  font-size: rem-calc(11);
+  color: $red;
+  cursor: pointer;
+}

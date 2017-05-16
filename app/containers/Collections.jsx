@@ -2,9 +2,9 @@ import React from 'react';
 let {connect} = require('react-redux');
 let actions = require('cartActions');
 import Loader from 'Loader';
-import ProductItem from 'ProductItem';
+import CollectionItem from 'CollectionItem';
 
-class Products extends React.Component {
+class Collections extends React.Component {
   constructor() {
     super();
   }
@@ -15,16 +15,21 @@ class Products extends React.Component {
   }
 
   render() {
-    let {products} = this.props;
+    let {collections} = this.props;
 
-    if (products.length > 0) {
+    if (collections.length > 0) {
       return (
         <div className="container">
           <div className="row">
             <div className="small-12 column">
-              <div className="products-grid">
-                {products.map(product => {
-                  return <ProductItem key={product.key} addToCart={() => this.handleAddToCart(product)} id={product.attrs.product_id} title={product.attrs.title} image={product.selectedVariant.imageVariants[4].src} />
+              <div className="collections-grid">
+                {collections.map(collection => {
+                  return <CollectionItem
+                            key={collection.key}
+                            addToCart={() => this.handleAddToCart(product)}
+                            id={collection.attrs.collection_id}
+                            image={collection.attrs.image.src}
+                            title={collection.attrs.title} />
                 })}
               </div>
             </div>
@@ -42,7 +47,7 @@ class Products extends React.Component {
 export default connect(
   (state) => {
     return {
-      products: state.products.all
+      collections: state.collections.all
     }
   }
-)(Products);
+)(Collections);

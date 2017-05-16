@@ -1,12 +1,9 @@
 import shopifyAPI from 'shopifyAPI';
 
-export var setActiveCollection = (id) => {
-  return (dispatch) => {
-    return shopifyAPI.buyClient.fetchCollection(id).then((data) => {
-      let collection = data || {};
-      let parsedCollection = {...collection};
-      dispatch({ type: 'SET_ACTIVE_COLLECTION', parsedCollection });
-    });
+export var setActiveCollection = (collection) => {
+  return {
+    type: 'SET_ACTIVE_COLLECTION',
+    collection
   };
 };
 
@@ -33,5 +30,25 @@ export var addCollections = (collections) => {
   return {
     type: 'ADD_COLLECTIONS',
     collections
+  };
+};
+
+export var changeActiveProduct = (updatedActiveProduct) => {
+  return {
+    type: 'CHANGE_ACTIVE_PRODUCT',
+    updatedActiveProduct
+  };
+};
+
+export var setCharity = (charity) => {
+  return {
+    type: 'SET_CHARITY',
+    charity
+  };
+};
+
+export var clearActiveCollection = () => {
+  return {
+    type: 'CLEAR_ACTIVE_COLLECTION'
   };
 };

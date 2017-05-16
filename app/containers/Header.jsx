@@ -22,7 +22,7 @@ class Header extends React.Component {
           <li className="site-nav-item"><Link to="/hats" activeClassName="active">Hats</Link></li>
           <li className="site-nav-item"><Link to="/about" activeClassName="active">About</Link></li>
           <li className="site-nav-item"><Link to="/contact" activeClassName="active">Contact</Link></li>
-          <li className="site-nav-item"><Link to="/categories" activeClassName="active" onClick={()=>{
+          <li className="site-nav-item"><Link onClick={()=>{
             dispatch(cartActions.openCart());
           }}>Cart</Link></li>
         </nav>

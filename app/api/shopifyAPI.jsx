@@ -11,6 +11,52 @@ class shopifyAPI {
     });
 
     this.cart = {};
+    this.collection = {};
+    this.products = [];
+  }
+
+  activateCollection(collectionId){
+    let fetchCollectionPromise = new Promise((resolve, reject) => {
+      this.buyClient.fetchCollection(collectionId).then((data) => {
+        let collection = data.attrs || {};
+        let parsedCollection = {
+          ...collection,
+          activeProduct: {
+            index: 0
+          }
+        };
+        this.collection = parsedCollection;
+        resolve(parsedCollection);
+      });
+    });
+
+    let fetchProductsPromise = new Promise((resolve, reject) => {
+      this.buyClient.fetchQueryProducts({collection_id: collectionId}).then(data => {
+        let products = data || [];
+        this.products = products;
+        resolve(products);
+      });
+    });
+
+    return Promise.all([fetchCollectionPromise, fetchProductsPromise]).then(values => {
+      return values;
+    }, reason => {
+      return reason;
+    });
+  }
+
+  getCurrentCollection(){
+    return [this.collection, this.products];
+  }
+
+  getCharities(){
+    return new Promise((resolve, reject) => {
+      this.buyClient.fetchQueryProducts({tag: ['Charity']}).then(data => {
+        let charities = data[0].variants || [];
+        console.log('got charities data: ', data);
+        resolve(charities);
+      });
+    });
   }
 
   createCart() {

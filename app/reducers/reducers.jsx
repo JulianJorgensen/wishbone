@@ -32,7 +32,7 @@ export var productsReducer = (state = {all: [], active: null}, action) => {
   }
 };
 
-export var collectionsReducer = (state = {all: [], active: null}, action) => {
+export var collectionsReducer = (state = {all: [], active: null, charity: null}, action) => {
   switch(action.type) {
     case 'ADD_COLLECTIONS':
       return {
@@ -42,7 +42,25 @@ export var collectionsReducer = (state = {all: [], active: null}, action) => {
     case 'SET_ACTIVE_COLLECTION':
       return {
         ...state,
-        active: action.parsedCollection
+        active: action.collection
+      };
+    case 'CHANGE_ACTIVE_PRODUCT':
+      return {
+        ...state,
+        active: {
+          ...state.active,
+          activeProduct: action.updatedActiveProduct
+        }
+      };
+    case 'SET_CHARITY':
+      return {
+        ...state,
+        charity: action.charity
+      };
+    case 'CLEAR_ACTIVE_COLLECTION':
+      return {
+        ...state,
+        active: null
       };
     default:
       return state;

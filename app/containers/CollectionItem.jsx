@@ -1,16 +1,17 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-class ProductItem extends React.Component {
+class CollectionItem extends React.Component {
   render() {
     let {title, id, image} = this.props;
+    console.log('img: ', image);
 
     return (
-      <div className="product-item">
-        <div className="product-item-inner">
-          <Link to={`/hat/${id}`}><div className="product-item-image" style={{backgroundImage: 'url(' + image + ')'}}></div></Link>
+      <div className="collection-item">
+        <div className="collection-item-inner">
+          <Link to={`/hat/${id}`}><div className="collection-item-image" style={{backgroundImage: 'url(' + image + ')'}}></div></Link>
           <hr />
-          <h6 className="product-item-title"><Link to={`/hat/${id}`}>{title}</Link></h6>
+          <h6 className="collection-item-title"><Link to={`/hat/${id}`}>{title}</Link></h6>
           <div className="author">
             <div className="author__photo" style={{backgroundImage: 'url(' + image + ')'}}></div>
             <div className="author__info">
@@ -27,4 +28,4 @@ class ProductItem extends React.Component {
   }
 }
 
-module.exports = ProductItem;
+module.exports = CollectionItem;

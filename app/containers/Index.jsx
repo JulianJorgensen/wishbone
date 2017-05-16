@@ -5,7 +5,7 @@ let {connect} = require('react-redux');
 let actions = require('cartActions');
 
 import Loader from 'Loader';
-import ProductItem from 'ProductItem';
+import CollectionItem from 'CollectionItem';
 
 class Index extends React.Component {
   constructor() {
@@ -18,17 +18,22 @@ class Index extends React.Component {
   }
 
   render() {
-    let {products} = this.props;
-    products = products.slice(0, 12);
+    let {collections} = this.props;
+    collections = collections.slice(0, 12);
 
-    if (products.length > 0) {
+    if (collections.length > 0) {
       return (
         <div>
           <div className="homepage-hero"></div>
           <div className="container">
-            <div className="products-grid">
-              {products.map(product => {
-                return <ProductItem key={product.key} addToCart={() => this.handleAddToCart(product)} id={product.attrs.product_id} title={product.attrs.title} image={product.selectedVariant.imageVariants[5].src} />
+            <div className="collections-grid">
+              {collections.map(collection => {
+                return <CollectionItem
+                          key={collection.key}
+                          addToCart={() => this.handleAddToCart(collection)}
+                          id={collection.attrs.collection_id}
+                          image={collection.attrs.image.src}
+                          title={collection.attrs.title} />
               })}
             </div>
           </div>
@@ -45,7 +50,7 @@ class Index extends React.Component {
 export default connect(
   (state) => {
     return {
-      products: state.products.all
+      collections: state.collections.all
     }
   }
 )(Index);

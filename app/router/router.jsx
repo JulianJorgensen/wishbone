@@ -6,8 +6,8 @@ let store = require('configureStore').configure();
 import DocumentMeta from 'react-document-meta';
 import Main from 'Main';
 import Index from 'Index';
-import Products from 'Products';
-import Product from 'Product';
+import Collections from 'Collections';
+import Collection from 'Collection/Index';
 import Upload from 'Upload';
 import OrderStatus from 'OrderStatus';
 import Login from 'Login';
@@ -33,8 +33,8 @@ export default (
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
       <IndexRoute path="/" component={Index} />
-      <Route path="hats" component={Products} />
-      <Route path="hat/:productId" component={Product} />
+      <Route path="hats" component={Collections} />
+      <Route path="hat/:collectionId" component={Collection} />
       <Route path="login" component={Login} />
       <Route path="about" component={About} />
       <Route path="contact" component={Contact} />

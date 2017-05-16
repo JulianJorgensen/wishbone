@@ -1,9 +1,101 @@
-.collection-item{
-  @include flex-grid-column(4, 10);
-  margin-bottom: rem-calc(30);
+.collections-grid-title{
+  font-size: rem-calc(16);
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $white;
+  text-shadow: 2px 2px 2px rgba($black, 0.4);
+}
 
-  .collection-item-inner{
-    border: 1px solid gray;
-    padding: rem-calc(15);
+.collections-nav{
+  .collections-nav__headline{
+    text-transform: uppercase;
+    color: $primary-color;
+    font-weight: bold;
+    margin-top: rem-calc(30);
+    &:first-child{
+      margin-top: 0;
+    }
+  }
+  ul{
+    margin: 0;
+  }
+  li{
+    list-style-type: none;
+  }
+
+  .collections-nav__search{
+    @include flex();
+    .collections-nav__search-button{
+      width: rem-calc(60);
+      background-color: $primary-color;
+      color: $white;
+    }
+  }
+  input{
+    margin-bottom: 0;
+  }
+}
+
+.collections-grid{
+  @include flex-grid-row();
+
+  .collection-item{
+    @include flex-grid-column(4, 15);
+    margin-bottom: rem-calc(15);
+
+    .collection-item-inner{
+      background-color: $white;
+      padding: rem-calc(20 15 15);
+      border-radius: rem-calc(10);
+      box-shadow: 1px 1px 6px rgba($black, 0.5);
+    }
+
+    .collection-item-title{
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: bold;
+      font-size: rem-calc(14);
+    }
+
+    .collection-item-image{
+      height: rem-calc(200);
+      width: 100%;
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      &:hover{
+        background-size: auto;
+      }
+    }
+
+    hr{
+      color: $primary-color;
+      border-width: 2px;
+      border-color: $primary-color;
+      margin: rem-calc(15 0);
+    }
+
+    .author{
+      @include flex();
+      @include flex-align(left, middle);
+      .author__photo{
+        width: rem-calc(30);
+        height: rem-calc(30);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        border-radius: 50%;
+        margin-right: rem-calc(8);
+      }
+      .author__info{
+        text-transform: uppercase;
+        font-size: rem-calc(11);
+        line-height: rem-calc(12);
+        .author__name{
+          font-weight: bold;
+          font-size: 1.2em;
+        }
+      }
+    }
   }
 }

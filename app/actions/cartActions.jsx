@@ -34,6 +34,35 @@ export var startAddorUpdateCartItem = (productVariant, quantity) => {
 
     //  update the cart items count
     dispatch(updateCartItemsCount(quantity));
+
+    // add active charity if not already in cart
+    let collections = getState().collections;
+    let selectedCharity = collections.charity;
+    if (selectedCharity){
+      let charityIsInCart = findCartItemByVariantId(selectedCharity.variant_id);
+      if (!charityIsInCart){
+        dispatch(clearCharitiesFromCart());
+        dispatch(addToCart(selectedCharity, 1));
+      }
+    }
+  }
+};
+
+// add product to cart
+export var clearCharitiesFromCart = () => {
+  return (dispatch, getState) => {
+    let cart = getState().cart;
+
+    let charitiesInCart = cart.lineItems.filter((item) => {
+      return (item.title === 'Charities');
+    });
+
+    if (charitiesInCart.length > 0){
+      charitiesInCart.map((charity) => {
+        dispatch(updateCartItem(charity, 0, true));
+      });
+    }
+    dispatch({ type: 'SET_CHARITY', null });
   }
 };
 
@@ -63,9 +92,6 @@ export var updateCartItemsCount = (quantity) => {
   return (dispatch, getState) => {
     let cart = getState().cart;
     let updatedCartItemsCount = parseInt(cart.lineItemsCount) + parseInt(quantity);
-    console.log('new quantity: ', quantity);
-    console.log('old quantity: ', cart.lineItemsCount);
-    console.log('updatedCartItemsCount: ', updatedCartItemsCount);
     dispatch({ type: 'UPDATE_CART_ITEMS_COUNT', updatedCartItemsCount });
 
     if(parseInt(updatedCartItemsCount) < 1) {
@@ -77,10 +103,17 @@ export var updateCartItemsCount = (quantity) => {
 };
 
 // update a cart item
-export var updateCartItem = (selectedCartItem, quantity) => {
+export var updateCartItem = (selectedCartItem, quantity, remove) => {
   return (dispatch, getState) => {
     let cart = getState().cart;
-    let updatedQuantity = selectedCartItem.quantity + quantity;
+
+    let updatedQuantity;
+    if(remove){
+      updatedQuantity = 0;
+    }else{
+      updatedQuantity = selectedCartItem.quantity + quantity;
+    }
+
     let updatedCartItems = [];
 
     // if the new quantity is more than 0, keep it in the new array

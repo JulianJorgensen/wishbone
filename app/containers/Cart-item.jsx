@@ -16,6 +16,34 @@ class CartItem extends React.Component {
       dispatch(actions.startAddorUpdateCartItem(item, parseInt(quantity)));
     }
 
+    let renderQuantity = () => {
+      if (item.title != 'Charities'){
+        return (
+          <div className="cart-item__quantity-container">
+            <button
+              className="btn--seamless quantity-decrement"
+              type="button"
+              onClick={() => {changeQuantity(-1)}}
+            ><span>-</span><span className="hide">Decrement</span></button>
+            <input
+              value={quantity}
+              className="cart-item__quantity"
+              type="number"
+              min="0"
+              readOnly
+            />
+            <button
+              className="btn--seamless quantity-increment"
+              type="button"
+              onClick={() => {changeQuantity(1)}}
+            ><span>+</span><span className="hide">Increment</span></button>
+          </div>
+        )
+      }else{
+        return (<div className="cart-item__remove" onClick={() => {dispatch(actions.updateCartItem(item, 0, true))}}>Remove</div>)
+      }
+    }
+
     return (
       <div className="cart-item">
         <div className="cart-item__img" style={{backgroundImage: 'url(' + item.imageVariants[2].src + ')'}}></div>
@@ -25,25 +53,7 @@ class CartItem extends React.Component {
             <span className="cart-item__title">{item.title}</span>
           </div>
           <div className="cart-item__content-row">
-            <div className="cart-item__quantity-container">
-              <button
-                className="btn--seamless quantity-decrement"
-                type="button"
-                onClick={() => {changeQuantity(-1)}}
-              ><span>-</span><span className="hide">Decrement</span></button>
-              <input
-                value={quantity}
-                className="cart-item__quantity"
-                type="number"
-                min="0"
-                readOnly
-              />
-              <button
-                className="btn--seamless quantity-increment"
-                type="button"
-                onClick={() => {changeQuantity(1)}}
-              ><span>+</span><span className="hide">Increment</span></button>
-            </div>
+            {renderQuantity()}
             <span className="cart-item__price">{Format.asMoney(item.price*quantity)}</span>
           </div>
         </div>
