@@ -1,6 +1,14 @@
 .page-home{
+  #main-container{
+    margin-top: 0;
+  }
+
   .homepage-hero{
-    height: rem-calc(530);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: calc(100vh - 80px);
     width: 100%;
     background-color: $grey40;
     background-image: url('/images/homepage_hero_image.jpg');
@@ -8,16 +16,94 @@
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
-
     margin-bottom: rem-calc(30);
+
+    color: white;
+    font-size: rem-calc(40);
+    font-weight: bold;
+
+    .subheader{
+      color: $white;
+      font-size: rem-calc(14);
+      margin-bottom: rem-calc(30);
+    }
+
+    .button{
+      color: white;
+      border-color: $grey60;
+      padding: rem-calc(15 20);
+    }
+
+    .arrow-down{
+      position: absolute;
+      left: 50%;
+      margin-left: rem-calc(-19);
+      bottom: rem-calc(30);
+      color: white;
+      font-size: rem-calc(50);
+    }
   }
 
-  // products grid
-  .products-grid{
-    @include flex-grid-row();
+  .homepage-hero-bottom{
+    height: rem-calc(650);
+    width: 100%;
+    background-color: $grey40;
+    background-image: url('/images/homepage_hero_image_bottom.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+  }
 
-    .product-item{
-      @include flex-grid-column(3, 15);
+  .hat-styles-header{
+    font-size: rem-calc(14);
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: rem-calc(50);
+  }
+  .hat-styles-subheader{
+    font-size: rem-calc(14);
+    color: $grey60;
+    text-align: center;
+    margin-bottom: rem-calc(50);
+  }
+
+  // news section
+  .news{
+    @include flex-grid-row();
+    padding-bottom: rem-calc(30);
+
+    .news-item{
+      @include flex-grid-column(6, 20);
+      .news-item-inner{
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        height: rem-calc(260);
+        position: relative;
+        a{
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          .link-content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: $white;
+            font-weight: bold;
+            padding-top: rem-calc(100);
+          }
+        }
+      }
+      &#news-item-wishbone .news-item-inner{
+        background-image: url('/images/news1-bg.jpg');
+      }
+      &#news-item-charities .news-item-inner{
+        background-image: url('/images/news2-bg.jpg');
+      }
     }
   }
 }

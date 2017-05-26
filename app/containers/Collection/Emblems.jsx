@@ -7,6 +7,10 @@ let collectionActions = require('collectionActions');
 class Emblems extends React.Component {
   constructor(){
     super();
+
+    this.state = {
+      active: null
+    }
   }
 
   render() {
@@ -26,6 +30,10 @@ class Emblems extends React.Component {
       }
       this.props.handleOptionChange();
       dispatch(collectionActions.changeActiveProduct(updatedActiveProduct));
+
+      this.setState({
+        active: value
+      });
     };
 
     return (
@@ -37,7 +45,7 @@ class Emblems extends React.Component {
               <div key={index} className="option-colors">
                 {option.values.map((value, index) => {
                   return (
-                    <div key={index} className={`option-color option-color__${value.replace(/\s+/g, '-').replace('-/-', '_').toLowerCase()}`} onClick={(event) => {
+                    <div key={index} className={`option-color option-color__${value.replace(/\s+/g, '-').replace('-/-', '_').toLowerCase()} ${value == this.state.active ? 'active' : ''}`} onClick={(event) => {
                       handleOptionChange(option.name, value);
                     }}></div>
                   )

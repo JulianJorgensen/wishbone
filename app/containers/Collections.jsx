@@ -29,7 +29,9 @@ class Collections extends React.Component {
                             addToCart={() => this.handleAddToCart(product)}
                             id={collection.attrs.collection_id}
                             image={collection.attrs.image.src}
-                            title={collection.attrs.title} />
+                            title={collection.attrs.title}
+                            description={collection.attrs.description}
+                          />
                 })}
               </div>
             </div>

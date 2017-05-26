@@ -9,6 +9,7 @@ class Footer extends React.Component {
   render() {
     return (
       <footer id="site-footer">
+        <div className="footer-wishbone"><img src="/images/wishbone-footer.png" /></div>
         <nav className="footer-nav">
           <div className="row">
             <div className="small-4 columns">

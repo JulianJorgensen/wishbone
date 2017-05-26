@@ -1,0 +1,143 @@
+.option-colors{
+  .option-color{
+    position: relative;
+    display: inline-block;
+    width: rem-calc(20);
+    height: rem-calc(20);
+    margin-right: rem-calc(5);
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: $grey90;
+
+    &:before{
+      content: '';
+      position: absolute;
+      height: inherit;
+      width: 50%;
+      left: 0;
+      border-top-left-radius: rem-calc(20);
+      border-bottom-left-radius: rem-calc(20);
+    }
+
+    &.active{
+      position: relative;
+      &:after{
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: rem-calc(-5);
+        margin-left: rem-calc(-5);
+        width: rem-calc(10);
+        height: rem-calc(10);
+        background-color: $white;
+        border: 1px solid $black;
+        border-radius: 50%;
+      }
+    }
+
+    &.option-color__white{
+      background-color: $white;
+      border: 1px dashed $black;
+      &.active:after{
+        background-color: $black;
+      }
+    }
+    &.option-color__black{
+      background-color: $black;
+    }
+    &.option-color__charcoal{
+      background-color: $charcoal;
+    }
+    &.option-color__old-gold{
+      background-color: $old-gold;
+    }
+    &.option-color__gold{
+      background-color: $gold;
+    }
+    &.option-color__orange{
+      background-color: $orange;
+    }
+    &.option-color__flamingo{
+      background-color: $flamingo;
+    }
+    &.option-color__bright-pink{
+      background-color: $bright-pink;
+    }
+    &.option-color__aqua-teal{
+      background-color: $aqua-teal;
+    }
+    &.option-color__royal{
+      background-color: $royal-blue;
+    }
+    &.option-color__royal-blue{
+      background-color: $royal-blue;
+    }
+    &.option-color__navy{
+      background-color: $navy-blue;
+    }
+    &.option-color__carolina-blue{
+      background-color: $carolina-blue;
+    }
+    &.option-color__grey{
+      background-color: $grey;
+    }
+    &.option-color__stone{
+      background-color: $stone;
+    }
+    &.option-color__kelly-green{
+      background-color: $kelly-green;
+    }
+    &.option-color__kiwi-green{
+      background-color: $kiwi-green;
+    }
+    &.option-color__forest-green{
+      background-color: $forest-green;
+    }
+    &.option-color__maroon{
+      background-color: $maroon;
+    }
+    &.option-color__red{
+      background-color: $red;
+    }
+    &.option-color__purple{
+      background-color: $purple;
+    }
+    &.option-color__royal_white{
+      background-color: $royal-blue;
+      &:before{
+        background-color: $white;
+      }
+    }
+    &.option-color__red_white{
+      background-color: $red;
+      &:before{
+        background-color: $white;
+      }
+    }
+    &.option-color__navy_white{
+      background-color: $navy-blue;
+      &:before{
+        background-color: $white;
+      }
+    }
+    &.option-color__kelly-green_white{
+      background-color: $kelly-green;
+      &:before{
+        background-color: $white;
+      }
+    }
+    &.option-color__black_white{
+      background-color: $black;
+      &:before{
+        background-color: $white;
+      }
+    }
+    &.option-color__white_black{
+      background-color: $white;
+      &:before{
+        background-color: $black;
+      }
+    }
+  }
+}

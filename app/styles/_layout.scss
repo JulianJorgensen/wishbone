@@ -6,11 +6,23 @@ body{
 
 #main-container{
   min-height: calc(100vh - #{rem-calc($nav-height + $footer-height)});
+  margin-top: rem-calc(80);
 }
 
 .container{
   max-width: rem-calc(1000);
   margin: 0 auto;
+}
+
+.section-header{
+  text-transform: uppercase;
+  font-size: rem-calc(14);
+  color: $grey40;
+  padding-bottom: rem-calc(10);
+  border-bottom: 3px solid $grey80;
+  width: rem-calc(100);
+  text-align: center;
+  margin: rem-calc(40) auto rem-calc(30);
 }
 
 .loader{
@@ -21,10 +33,14 @@ body{
 }
 
 #site-footer{
-  margin-top: rem-calc(60);
   padding: rem-calc(60 0);
   &, a{
-    color: $grey60;    
+    color: $grey60;
+  }
+
+  .footer-wishbone{
+    text-align: center;
+    padding-bottom: rem-calc(50);
   }
 
   .footer-nav{

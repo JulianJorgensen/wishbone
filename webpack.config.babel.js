@@ -8,6 +8,8 @@ import autoprefixer from 'autoprefixer';
 import PostCSS from './postcss.config';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
+const extractFonts = new ExtractTextPlugin('fonts.css');
+
 // define environment constants
 const NODE_ENV = (process.env.NODE_ENV || 'development');
 const IS_PRODUCTION = (NODE_ENV === 'production');
@@ -71,6 +73,16 @@ const BASE_CONFIG = {
         })
       },
       {
+        test: /fonts\.css/,
+        loader: extractFonts.extract({
+          loader: 'css-loader',
+        }),
+      },
+      {
+        test: /\.(woff|woff2)$/,
+        use: 'url-loader'
+      },
+      {
         test: /\.json$/i,
         use: 'json'
       },
@@ -88,14 +100,6 @@ const BASE_CONFIG = {
           'file?name=/images/[name].[ext]',
           'image-webpack-loader'
         ]
-      },
-      {
-        test: /\.woff$/,
-        use: 'url?limit=10000&mimetype=application/font-woff&name=[path][name].[ext]'
-      },
-      {
-        test: /\.woff2$/,
-        use: 'url?limit=10000&mimetype=application/font-woff2&name=[path][name].[ext]'
       }
     ]
   },
@@ -123,7 +127,8 @@ const BASE_CONFIG = {
     extractSass,
     new HTMLWebpackPlugin({
       template: 'app/index.html'
-    })
+    }),
+    extractFonts
   ],
   devtool: `${IS_PRODUCTION ? 'inline' : 'cheap-eval'}-source-map`,
   resolve: {
@@ -154,6 +159,7 @@ const BASE_CONFIG = {
 
 // Webpack plugins unique to the production build:
 const PROD_PLUGINS = [
+  new ExtractTextPlugin('[name].min.[contenthash].css'),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
       screw_ie8: true,
@@ -169,6 +175,7 @@ const PROD_PLUGINS = [
 
 // Webpack plugins unique to the development build:
 const DEV_PLUGINS = [
+  new ExtractTextPlugin('[name].[contenthash].css'),
   new webpack.HotModuleReplacementPlugin(),
   new StatsPlugin('stats.json', {
     chunkModules: true

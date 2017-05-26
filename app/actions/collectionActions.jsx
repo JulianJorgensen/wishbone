@@ -10,18 +10,34 @@ export var setActiveCollection = (collection) => {
 // Add collections to store
 export var startAddCollections = () => {
   return (dispatch) => {
-    return shopifyAPI.buyClient.fetchAllCollections().then((data) => {
-      var collections = data || {};
-      var parsedCollections = [];
+    return new Promise(function(resolve, reject){
+      shopifyAPI.buyClient.fetchAllCollections().then((data) => {
+        var collections = data || {};
+        var parsedCollections = [];
 
-      Object.keys(collections).forEach((collectionId) => {
-        parsedCollections.push({
-          key: collectionId,
-          ...collections[collectionId]
+        let parseCollectionsPromises = collections.map((collection) => {
+          let collectionId = collection.attrs.collection_id;
+          return new Promise(function(resolve, reject){
+            let products = [];
+            shopifyAPI.buyClient.fetchQueryProducts({collection_id: collectionId}).then(data => {
+              products = data || [];
+
+              parsedCollections.push({
+                key: collectionId,
+                products: products,
+                ...collection
+              });
+
+              resolve();
+            });
+          });
+        });
+
+        Promise.all(parseCollectionsPromises).then(() => {
+          dispatch(addCollections(parsedCollections));
+          resolve();
         });
       });
-
-      dispatch(addCollections(parsedCollections));
     });
   };
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import Format from 'format';
+import utils from 'utils';
 let { connect } = require('react-redux');
 let actions = require('cartActions');
 
@@ -54,7 +54,7 @@ class CartItem extends React.Component {
           </div>
           <div className="cart-item__content-row">
             {renderQuantity()}
-            <span className="cart-item__price">{Format.asMoney(item.price*quantity)}</span>
+            <span className="cart-item__price">{utils.formatAsMoney(item.price*quantity)}</span>
           </div>
         </div>
       </div>

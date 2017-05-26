@@ -15,14 +15,14 @@ class shopifyAPI {
     this.products = [];
   }
 
-  activateCollection(collectionId){
+  activateCollection(collectionId, activeProductIndex){
     let fetchCollectionPromise = new Promise((resolve, reject) => {
       this.buyClient.fetchCollection(collectionId).then((data) => {
         let collection = data.attrs || {};
         let parsedCollection = {
           ...collection,
           activeProduct: {
-            index: 0
+            index: activeProductIndex
           }
         };
         this.collection = parsedCollection;
@@ -45,7 +45,7 @@ class shopifyAPI {
     });
   }
 
-  getCurrentCollection(){
+  getCurrentCollection(collectionId){
     return [this.collection, this.products];
   }
 

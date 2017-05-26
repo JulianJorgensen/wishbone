@@ -38,16 +38,17 @@
 
 .collections-grid{
   @include flex-grid-row();
+  margin-bottom: rem-calc(60);
 
   .collection-item{
-    @include flex-grid-column(4, 15);
-    margin-bottom: rem-calc(15);
+    @include flex-grid-column(3, 20);
+    margin-bottom: rem-calc(20);
 
     .collection-item-inner{
       background-color: $white;
       padding: rem-calc(20 15 15);
-      border-radius: rem-calc(10);
-      box-shadow: 1px 1px 6px rgba($black, 0.5);
+      border: 1px solid $grey70;
+      text-align: center;
     }
 
     .collection-item-title{
@@ -55,6 +56,7 @@
       text-align: center;
       font-weight: bold;
       font-size: rem-calc(14);
+      margin: rem-calc(10 0);
     }
 
     .collection-item-image{
@@ -63,39 +65,16 @@
       background-position: center center;
       background-size: contain;
       background-repeat: no-repeat;
-      &:hover{
-        background-size: auto;
-      }
     }
 
-    hr{
-      color: $primary-color;
-      border-width: 2px;
-      border-color: $primary-color;
-      margin: rem-calc(15 0);
+    .price{
+      text-align: center;
+      font-weight: bold;
     }
 
-    .author{
-      @include flex();
-      @include flex-align(left, middle);
-      .author__photo{
-        width: rem-calc(30);
-        height: rem-calc(30);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-        border-radius: 50%;
-        margin-right: rem-calc(8);
-      }
-      .author__info{
-        text-transform: uppercase;
-        font-size: rem-calc(11);
-        line-height: rem-calc(12);
-        .author__name{
-          font-weight: bold;
-          font-size: 1.2em;
-        }
-      }
+    .option-colors{
+      text-align: center;
+      height: rem-calc(60);
     }
   }
 }

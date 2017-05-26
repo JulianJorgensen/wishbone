@@ -5,7 +5,7 @@ let actions = require('cartActions');
 import shopifyAPI from 'shopifyAPI';
 import CartItem from 'Cart-item';
 
-import Format from 'format';
+import utils from 'utils';
 
 class Cart extends React.Component {
   constructor(){
@@ -63,7 +63,7 @@ class Cart extends React.Component {
               <div className="type--caps cart-info__total cart-info__small">Total</div>
               <div className="cart-info__pricing">
                 <span className="cart-info__small cart-info__total">USD</span>
-                <span className="pricing pricing--no-padding">{Format.asMoney(subtotal)}</span>
+                <span className="pricing pricing--no-padding">{utils.formatAsMoney(subtotal)}</span>
               </div>
             </div>
             <div className="cart-actions-container cart-section type--center">
