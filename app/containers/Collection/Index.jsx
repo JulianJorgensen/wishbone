@@ -9,6 +9,7 @@ import utils from 'utils';
 import shopifyAPI from 'shopifyAPI';
 import Loader from 'Loader';
 import InstagramFeed from 'InstagramFeed';
+import ReactTooltip from 'react-tooltip';
 
 import Products from 'Collection/Products';
 import Options from 'Collection/Options';
@@ -22,13 +23,20 @@ class Collection extends React.Component {
 
     this.state = {
       dataFetched: false,
-      imageStatus: 'loading'
+      imageStatus: 'loading',
+      productSelected: false,
+      emblemSelected: false,
+      charitySelected: false,
+      showError: false
     }
 
     let dispatch;
     let products = [];
 
+    this.handleProductChange = this.handleProductChange.bind(this);
+    this.handleEmblemChange = this.handleEmblemChange.bind(this);
     this.handleOptionChange = this.handleOptionChange.bind(this);
+    this.handleCharityChange = this.handleCharityChange.bind(this);
   }
 
   componentWillMount(){
@@ -38,6 +46,7 @@ class Collection extends React.Component {
 
     if (this.props.activeCollection){
       activeProductIndex = this.props.activeCollection.activeProduct.index;
+      this.setState({productSelected: true});
     }else{
       activeProductIndex = 0;
     }
@@ -52,11 +61,34 @@ class Collection extends React.Component {
   }
 
   componentWillUnmount(){
+    this.dispatch(collectionActions.productIsSelected(false));
     this.dispatch(collectionActions.clearActiveCollection());
   }
 
+  handleProductChange() {
+    this.setState({
+      imageStatus: 'loading',
+      productSelected: true
+    });
+  }
+
+  handleEmblemChange() {
+    this.setState({
+      imageStatus: 'loading',
+      emblemSelected: true
+    });
+  }
+
   handleOptionChange() {
-    this.setState({ imageStatus: 'loading' });
+    this.setState({
+      optionSelected: true
+    });
+  }
+
+  handleCharityChange() {
+    this.setState({
+      charitySelected: true
+    });
   }
 
   handleImageLoaded() {
@@ -89,6 +121,8 @@ class Collection extends React.Component {
         }
       }
 
+      console.log('>> activeProduct: ', activeProduct);
+
       return (
         <div>
           <div className="container">
@@ -108,29 +142,37 @@ class Collection extends React.Component {
                 <div className="collection-info">
                   {renderDescription()}
 
-                  <Products handleOptionChange={this.handleOptionChange} showHeadline={true} />
+                  <Products error={this.state.showError && !this.state.productSelected} handleOptionChange={this.handleProductChange} showHeadline={true} />
 
-                  <Emblems handleOptionChange={this.handleOptionChange} />
+                  <Emblems error={this.state.showError && !this.state.emblemSelected} handleOptionChange={this.handleEmblemChange} />
 
                   <Options handleOptionChange={this.handleOptionChange} />
 
                   <Sizes />
 
-                  <Charity />
+                  <Charity error={this.state.showError && !this.state.charitySelected} handleOptionChange={this.handleCharityChange} />
 
                   <div className="product-price">{utils.formatAsMoney(selectedVariant.price)}</div>
 
                   <button
                     onClick={()=>{
-                      dispatch(cartActions.startAddorUpdateCartItem(activeProduct.selectedVariant, 1));
+                      if (this.state.productSelected && this.state.emblemSelected && this.state.charitySelected){
+                        dispatch(cartActions.startAddorUpdateCartItem(activeProduct.selectedVariant, 1));
+                      }else{
+                        this.setState({
+                          showError: true
+                        });
+                      }
                     }}
                     className="button large add-to-cart">Add To Cart</button>
+                    <div className={`error-msg ${this.state.showError && (!this.state.productSelected || !this.state.emblemSelected || !this.state.charitySelected) ? 'active' : ''}`}>Please make selections above to continue.</div>
                   <img src="/images/credit-cards.png" alt="Accepted credit cards" />
                 </div>
               </div>
             </div>
           </div>
           <InstagramFeed />
+          <ReactTooltip />
         </div>
       )
     }else{

@@ -1,31 +1,3 @@
-$red: red;
-$maroon: #820000;
-$orange: #cc6600;
-$flamingo: pink;
-$bright-pink: pink;
-$kiwi-green: green;
-$kelly-green: green;
-$forest-green: green;
-$stone: grey;
-$grey: grey;
-$navy-blue: navy;
-$gold: gold;
-$old-gold: gold;
-$charcoal: grey;
-$aqua-teal: teal;
-$carolina-blue: blue;
-$purple: purple;
-$royal-blue: blue;
-$blue: blue;
-
-$color-primary: #7fb466;
-$color-primary-hover: #77a960;
-$color-body: #31373d;
-$color-title: #767676;
-$color-border: #a5a5a5;
-$color-border-primary: #79ab61;
-
-
 // greys
 $grey5:         lighten(black, 5);
 $grey10:        lighten(black, 10);
@@ -39,6 +11,36 @@ $grey80:        lighten(black, 80);
 $grey90:        lighten(black, 90);
 $grey95:        lighten(black, 95);
 
+// colors
+$red: #c92739;
+$maroon: #741f31;
+$orange: #ee532e;
+$flamingo: #de188c;
+$bright-pink: pink;
+$kiwi-green: #a9be39;
+$kelly-green: #00905e;
+$forest-green: #0a6250;
+$spruce: #0a6250;
+$stone: #b49c7d;
+$khaki: #b49c7d;
+$grey: #a8aab4;
+$dark-grey: $grey30;
+$navy-blue: #1c3b59;
+$gold: #fdc331;
+$old-gold: #bf8224;
+$charcoal: grey;
+$aqua-teal: #00b2ed;
+$carolina-blue: blue;
+$purple: #674698;
+$royal-blue: #005da8;
+$blue: blue;
+
+$color-primary: #7fb466;
+$color-primary-hover: #77a960;
+$color-body: #31373d;
+$color-title: #767676;
+$color-border: #a5a5a5;
+$color-border-primary: #79ab61;
 
 
 // spacings

@@ -73,6 +73,7 @@
     &.option-color__royal-blue{
       background-color: $royal-blue;
     }
+    &.option-color__dark-navy,
     &.option-color__navy{
       background-color: $navy-blue;
     }
@@ -82,11 +83,20 @@
     &.option-color__grey{
       background-color: $grey;
     }
+    &.option-color__dark-grey{
+      background-color: $dark-grey;
+    }
     &.option-color__stone{
       background-color: $stone;
     }
     &.option-color__kelly-green{
       background-color: $kelly-green;
+    }
+    &.option-color__spruce{
+      background-color: $spruce;
+    }
+    &.option-color__khaki{
+      background-color: $khaki;
     }
     &.option-color__kiwi-green{
       background-color: $kiwi-green;

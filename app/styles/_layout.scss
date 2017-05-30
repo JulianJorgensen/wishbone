@@ -47,11 +47,23 @@ body{
     padding: 0;
     margin-bottom: rem-calc(30);
 
+    ul{
+      list-style-type: none;
+      margin: 0;
+    }
+
     .footer-nav-headline{
       text-transform: uppercase;
       border-bottom: 1px solid $grey60;
       padding-bottom: rem-calc(8);
       margin-bottom: rem-calc(20);
+    }
+  }
+
+  #footer-socialmedia{
+    i{
+      font-size: rem-calc(30);
+      margin-right: rem-calc(15);
     }
   }
 

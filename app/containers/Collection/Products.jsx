@@ -8,6 +8,10 @@ let collectionActions = require('collectionActions');
 class Products extends React.Component {
   constructor(){
     super();
+
+    this.state = {
+      selected: false
+    }
   }
 
   render() {
@@ -31,6 +35,10 @@ class Products extends React.Component {
         index: index
       }
 
+      this.setState({
+        selected: true
+      });
+
       if (this.props.handleOptionChange){
         this.props.handleOptionChange();
       }
@@ -38,19 +46,20 @@ class Products extends React.Component {
       dispatch(collectionActions.changeActiveProduct(updatedActiveProduct));
 
       if (collectionId){
+        dispatch(collectionActions.productIsSelected(true));
         browserHistory.push(`/hat/${collectionId}`);
       }
     };
 
     return (
       <div className="products">
-        <h4 className={`collection__subheadline ${showHeadline ? '' : 'hide'}`}>Choose <span className="font-black">HAT</span> color:</h4>
+        <h4 className={`collection__subheadline ${this.props.error ? 'error' : ''} ${showHeadline ? '' : 'hide'}`}>Choose <span className="font-black">HAT</span> color:</h4>
 
         <div className="option-colors">
           {products.map((product, index) => {
             let title = product.title.split(' - ').slice(-1)[0];
             return (
-              <div key={index} className={`option-color option-color__${title.replace(/\s+/g, '-').replace('-/-', '_').toLowerCase()} ${activeProductIndex == index ? 'active' : ''}`} onClick={(event) => {
+              <div data-tip={title} key={index} className={`option-color option-color__${title.replace(/\s+/g, '-').replace('-/-', '_').toLowerCase()} ${(activeProductIndex == index) && collections.productIsSelected ? 'active' : ''}`} onClick={(event) => {
                 handleProductChange(index);
               }}></div>
             )

@@ -52,6 +52,11 @@ export var collectionsReducer = (state = {all: [], active: null, charity: null},
           activeProduct: action.updatedActiveProduct
         }
       };
+    case 'PRODUCT_IS_SELECTED':
+      return {
+        ...state,
+        productIsSelected: action.isSelected
+      };
     case 'SET_CHARITY':
       return {
         ...state,

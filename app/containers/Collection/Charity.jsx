@@ -3,6 +3,7 @@ import {Link, IndexLink} from 'react-router';
 import shopifyAPI from 'shopifyAPI';
 let {connect} = require('react-redux');
 let collectionActions = require('collectionActions');
+import ReactTooltip from 'react-tooltip'
 
 class Charity extends React.Component {
   constructor(){
@@ -39,15 +40,21 @@ class Charity extends React.Component {
     let charities = this.state.charities;
 
     if (charities){
+      setTimeout(function(){
+        ReactTooltip.rebuild();
+      }, 20);
       return (
         <div className="charities-wrapper">
-          <h4 className="collection__subheadline">Select a charity <small className="font-orange">- 50% of profits go to the charity you choose.</small></h4>
+          <h4 className={`collection__subheadline ${this.props.error ? 'error' : ''}`}>Select a charity <small className="font-orange">- 50% of profits go to the charity you choose.</small></h4>
           <div className="charities">
             {charities.map((charity) => {
+              let association = charity.optionValues[0].value;
+              let description = charity.optionValues[1].value;
               return (
-                <div className={`charity ${activeCharity ? activeCharity.id === charity.id ? 'active' : '' : ''}`} onClick={() => {
+                <div data-tip={description} className={`charity ${activeCharity ? activeCharity.id === charity.id ? 'active' : '' : ''}`} onClick={() => {
+                  this.props.handleOptionChange();
                   dispatch(collectionActions.setCharity(charity));
-                }}>{charity.title}</div>
+                }}>{association}</div>
               )
             })}
           </div>

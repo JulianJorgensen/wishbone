@@ -38,14 +38,14 @@ class Emblems extends React.Component {
 
     return (
       <div className="emblem-colors">
-        <h4 className="collection__subheadline">Choose <span className="font-black">WISHBONE</span> color: (3D puff embroidery)</h4>
+        <h4 className={`collection__subheadline ${this.props.error ? 'error' : ''}`}>Choose <span className="font-black">WISHBONE</span> color: (3D puff embroidery)</h4>
         {activeProduct.options.map((option, index) => {
           if (option.name == "Emblem") {
             return (
               <div key={index} className="option-colors">
                 {option.values.map((value, index) => {
                   return (
-                    <div key={index} className={`option-color option-color__${value.replace(/\s+/g, '-').replace('-/-', '_').toLowerCase()} ${value == this.state.active ? 'active' : ''}`} onClick={(event) => {
+                    <div key={index} data-tip={value} className={`option-color option-color__${value.replace(/\s+/g, '-').replace('-/-', '_').toLowerCase()} ${value == this.state.active ? 'active' : ''}`} onClick={(event) => {
                       handleOptionChange(option.name, value);
                     }}></div>
                   )

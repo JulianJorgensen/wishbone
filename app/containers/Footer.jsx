@@ -27,14 +27,16 @@ class Footer extends React.Component {
               <p>A great About Us page helps builds trust between you and your customers. The more content you provide about you and your business, the more confident people will be when purchasing from your store.</p>
             </div>
 
-            <div className="small-4 columns">
-              <div className="footer-nav-headline">NEWSLETTER</div>
-              <p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
+            <div className="small-4 columns" id="footer-socialmedia">
+              <div className="footer-nav-headline">Social Media</div>
+              <a href="https://www.instagram.com/wishbonehats/" target="_new"><i className="fa fa-instagram" /></a>
+              <a href="https://www.facebook.com/WishboneHats-247362542342002/" target="_new"><i className="fa fa-facebook-square" /></a>
+              <a href="https://www.pinterest.com/wishbonehats/" target="_new"><i className="fa fa-pinterest" /></a>
             </div>
           </div>
         </nav>
 
-        <div className="footer-copyright">&copy; WISHBONE HATS 2017 SEARCH ABOUT US</div>
+        <div className="footer-copyright">&copy; WISHBONE HATS 2017</div>
         <ul className="footer-payment">
           <li><i className="fa fa-cc-amex"></i></li>
           <li><i className="fa fa-cc-jcb"></i></li>

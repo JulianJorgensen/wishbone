@@ -31,7 +31,7 @@ class shopifyAPI {
     });
 
     let fetchProductsPromise = new Promise((resolve, reject) => {
-      this.buyClient.fetchQueryProducts({collection_id: collectionId}).then(data => {
+      this.buyClient.fetchQueryProducts({collection_id: collectionId, sort_by: 'collection-default'}).then(data => {
         let products = data || [];
         this.products = products;
         resolve(products);
@@ -46,6 +46,7 @@ class shopifyAPI {
   }
 
   getCurrentCollection(collectionId){
+    console.log('getcurrencollection: ', [this.collection, this.products]);
     return [this.collection, this.products];
   }
 

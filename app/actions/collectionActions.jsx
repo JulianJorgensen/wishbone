@@ -19,8 +19,9 @@ export var startAddCollections = () => {
           let collectionId = collection.attrs.collection_id;
           return new Promise(function(resolve, reject){
             let products = [];
-            shopifyAPI.buyClient.fetchQueryProducts({collection_id: collectionId}).then(data => {
+            shopifyAPI.buyClient.fetchQueryProducts({collection_id: collectionId, sort_by: 'collection-default'}).then(data => {
               products = data || [];
+              console.log('data from shopify: ', products);
 
               parsedCollections.push({
                 key: collectionId,
@@ -53,6 +54,13 @@ export var changeActiveProduct = (updatedActiveProduct) => {
   return {
     type: 'CHANGE_ACTIVE_PRODUCT',
     updatedActiveProduct
+  };
+};
+
+export var productIsSelected = (isSelected) => {
+  return {
+    type: 'PRODUCT_IS_SELECTED',
+    isSelected
   };
 };
 

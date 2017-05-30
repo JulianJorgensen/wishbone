@@ -72,8 +72,8 @@
           &.active{
             color: $black;
             &:before{
-              border: 1px solid $blue;
-              background-color: $blue;
+              border: 1px solid $grey50;
+              background-color: $grey50;
             }
           }
         }
@@ -108,6 +108,18 @@
     font-weight: bold;
     color: $grey40;
     font-size: rem-calc(13);
+
+    &.error{
+      position: relative;
+      &:before{
+        content: 'x';
+        position: absolute;
+        margin-left: rem-calc(-20);
+        font-size: rem-calc(25);
+        top: rem-calc(-10);
+        color: $red;
+      }
+    }
   }
 
   .active-product-image{
@@ -123,6 +135,16 @@
       width: rem-calc(100);
       background-color: rgba($black, 0.5);
       border-radius: rem-calc(10);
+    }
+  }
+
+  .error-msg{
+    color: $red;
+    font-weight: bold;
+    display: none;
+    &.active{
+      display: block;
+      padding-bottom: rem-calc(20);
     }
   }
 }
