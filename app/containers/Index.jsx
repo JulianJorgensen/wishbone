@@ -54,10 +54,10 @@ class Index extends React.Component {
           <h3 className="section-header">News</h3>
           <div className="news">
             <div id="news-item-wishbone" className="news-item">
-              <div className="news-item-inner"><Link to="#"><div className="link-content">Wishbone Hats</div></Link></div>
+              <div className="news-item-inner"><Link to="/news/226615620"><div className="link-content">Wishbone Hats</div></Link></div>
             </div>
             <div id="news-item-charities" className="news-item">
-              <div className="news-item-inner"><Link to="#"><div className="link-content">About the Charities</div></Link></div>
+              <div className="news-item-inner"><Link to="/news/226615620"><div className="link-content">About the Charities</div></Link></div>
             </div>
           </div>
 

@@ -985,10 +985,6 @@ big.js@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-3.1.3.tgz#4cada2193652eb3ca9ec8e55c9015669c9806978"
 
-bignumber.js@~1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-1.1.1.tgz#1a415d9ac014c13256af1feed9d1a3e5717a8cf7"
-
 bin-build@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/bin-build/-/bin-build-2.2.0.tgz#11f8dd61f70ffcfa2bdcaa5b46f5e8fedd4221cc"
@@ -3683,12 +3679,6 @@ jsesc@~0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
 
-json-bigint@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/json-bigint/-/json-bigint-0.1.4.tgz#b5d40b8a9009e92f157f7c079db097001830e01e"
-  dependencies:
-    bignumber.js "~1.1.1"
-
 json-loader@^0.5.4:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/json-loader/-/json-loader-0.5.4.tgz#8baa1365a632f58a3c46d20175fc6002c96e37de"
@@ -5915,12 +5905,6 @@ shopify-buy@^0.6.1:
     core-js "2.4.1"
     node-fetch "1.3.3"
     whatwg-fetch "0.10.1"
-
-shopify-node-api@^1.7.6:
-  version "1.7.6"
-  resolved "https://registry.yarnpkg.com/shopify-node-api/-/shopify-node-api-1.7.6.tgz#8c913eb75ea8b2844e3a0f7e174dee27853940f6"
-  dependencies:
-    json-bigint "^0.1.4"
 
 signal-exit@^3.0.0:
   version "3.0.2"

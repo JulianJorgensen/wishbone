@@ -64,6 +64,9 @@
     &.option-color__bright-pink{
       background-color: $bright-pink;
     }
+    &.option-color__pink{
+      background-color: $pink;
+    }
     &.option-color__aqua-teal{
       background-color: $aqua-teal;
     }
@@ -73,6 +76,9 @@
     &.option-color__royal-blue{
       background-color: $royal-blue;
     }
+    &.option-color__light-blue{
+      background-color: $light-blue;
+    }
     &.option-color__dark-navy,
     &.option-color__navy{
       background-color: $navy-blue;
@@ -80,11 +86,15 @@
     &.option-color__carolina-blue{
       background-color: $carolina-blue;
     }
-    &.option-color__grey{
+    &.option-color__grey,
+    &.option-color__gray{
       background-color: $grey;
     }
     &.option-color__dark-grey{
       background-color: $dark-grey;
+    }
+    &.option-color__silver{
+      background-color: $silver;
     }
     &.option-color__stone{
       background-color: $stone;
@@ -113,11 +123,41 @@
     &.option-color__purple{
       background-color: $purple;
     }
+    &.option-color__purple_gold{
+      background-color: $purple;
+      &:before{
+        background-color: $gold;
+      }
+    }
     &.option-color__royal_white{
       background-color: $royal-blue;
       &:before{
         background-color: $white;
       }
+    }
+    &.option-color__royal_grey{
+      background-color: $royal-blue;
+      &:before{
+        background-color: $grey;
+      }
+    }
+    &.option-color__royal_orange{
+      background-color: $royal-blue;
+      &:before{
+        background-color: $orange;
+      }
+    }
+    &.option-color__neon-yellow{
+      background-color: $neon-yellow;
+    }
+    &.option-color__neon-pink{
+      background-color: $neon-pink;
+    }
+    &.option-color__neon-green{
+      background-color: $neon-green;
+    }
+    &.option-color__neon-fuchsia{
+      background-color: $neon-fuchsia;
     }
     &.option-color__red_white{
       background-color: $red;
@@ -131,11 +171,36 @@
         background-color: $white;
       }
     }
+    &.option-color__navy_red{
+      background-color: $navy-blue;
+      &:before{
+        background-color: $red;
+      }
+    }
     &.option-color__kelly-green_white{
       background-color: $kelly-green;
       &:before{
         background-color: $white;
       }
+    }
+    &.option-color__natural_black{
+      background-color: $natural;
+      &:before{
+        background-color: $black;
+      }
+    }
+    &.option-color__natural{
+      background-color: $natural;
+    }
+    &.option-color__green{
+      background-color: $green;
+    }
+    &.option-color__olive{
+      background-color: $olive;
+    }
+    &.option-color__green-tiger-camo,
+    &.option-color__green-camo{
+      background-color: $green-tiger-camo;
     }
     &.option-color__black_white{
       background-color: $black;

@@ -13,6 +13,7 @@ import OrderStatus from 'OrderStatus';
 import Login from 'Login';
 import About from 'About';
 import Contact from 'Contact';
+import NewsItem from 'NewsItem';
 
 import ReactGA from 'react-ga';
 // ReactGA.initialize('UA-6241825-9'); // initialize Google Analytics
@@ -38,6 +39,7 @@ export default (
       <Route path="login" component={Login} />
       <Route path="about" component={About} />
       <Route path="contact" component={Contact} />
+      <Route path="news/:postId" component={NewsItem} />
     </Route>
   </Router>
 );

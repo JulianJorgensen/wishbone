@@ -46,7 +46,6 @@ class shopifyAPI {
   }
 
   getCurrentCollection(collectionId){
-    console.log('getcurrencollection: ', [this.collection, this.products]);
     return [this.collection, this.products];
   }
 

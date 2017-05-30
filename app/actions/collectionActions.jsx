@@ -15,6 +15,8 @@ export var startAddCollections = () => {
         var collections = data || {};
         var parsedCollections = [];
 
+        console.log('!!collections: ', collections);
+
         let parseCollectionsPromises = collections.map((collection) => {
           let collectionId = collection.attrs.collection_id;
           return new Promise(function(resolve, reject){
@@ -34,7 +36,19 @@ export var startAddCollections = () => {
           });
         });
 
+
         Promise.all(parseCollectionsPromises).then(() => {
+
+          // sort the collections alphabetically
+          parsedCollections.sort(function(a, b){
+            var keyA = a.attrs.title,
+                keyB = b.attrs.title;
+            // Compare the 2
+            if(keyA < keyB) return -1;
+            if(keyA > keyB) return 1;
+            return 0;
+          });
+
           dispatch(addCollections(parsedCollections));
           resolve();
         });

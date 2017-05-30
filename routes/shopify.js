@@ -1,39 +1,31 @@
 let express = require('express');
 let router = express.Router();
-let shopifyAPI = require('shopify-node-api');
-let cors = require('cors');
+let Shopify = require('shopify-api-node');
 
-// Enable CORS
-var whitelist = ['http://example1.com', 'http://example2.com']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
 
 // Environment and variables
 const NODE_ENV = (process.env.NODE_ENV || 'development');
-let ENV = require('.././config/' + NODE_ENV + '.config');
+let ENV_CONFIG = require('.././config/' + NODE_ENV + '.config');
+require('dotenv').config();
 
 // Establish connection with Shopify
-let Shopify = new shopifyAPI({
-  shop: ENV.SHOPIFY_SHOP,
-  shopify_api_key: ENV.SHOPIFY_API_KEY,
-  access_token: ENV.ACCESS_TOKEN
+const shopify = new Shopify({
+  shopName: ENV_CONFIG.SHOPIFY_SHOP,
+  apiKey: process.env.SHOPIFY_API_KEY,
+  password: process.env.SHOPIFY_API_KEY_PASSWORD
 });
 
-// Index route for Shopify
-router.route('/')
-  .get(cors(corsOptions), function (req, res) {
-    console.log('getting data from Shopify...');
-    Shopify.get('/admin/products.json', function(err, data, headers){
-      res.json(data);
-    });
+
+// Get news post item
+router.route('/get-news-item')
+  .get(function (req, res) {
+    shopify.article.get(req.query.blog_id, req.query.post_id)
+    .then((newsItem) => {
+      res.status(200).send(newsItem);
+    })
+    .catch(err => console.error(err));
   });
+
 
 module.exports = router;
 
