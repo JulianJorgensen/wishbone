@@ -1,7 +1,7 @@
 {
   "name": "Wishbone",
   "version": "0.2.0",
-  "description": "Wishbone: React and Redux eCommerce based on Shopify Buy SDK",
+  "description": "Wishbone: React and Redux eCommerce based on Shopify Buy SDK.",
   "main": "index.js",
   "scripts": {
     "test": "karma start",
