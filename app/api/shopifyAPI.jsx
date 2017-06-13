@@ -45,6 +45,14 @@ class shopifyAPI {
     });
   }
 
+  changeProduct(value){
+    this.products.map((product) => {
+      product.options.filter((option) => {
+        return option.name === 'Emblem';
+      })[0].selected = value;
+    });
+  }
+
   getCurrentCollection(collectionId){
     return [this.collection, this.products];
   }

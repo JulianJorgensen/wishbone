@@ -2,8 +2,8 @@
   .option-color{
     position: relative;
     display: inline-block;
-    width: rem-calc(20);
-    height: rem-calc(20);
+    width: rem-calc(16);
+    height: rem-calc(16);
     margin-right: rem-calc(5);
     border-radius: 50%;
     cursor: pointer;
@@ -15,8 +15,8 @@
       height: inherit;
       width: 50%;
       left: 0;
-      border-top-left-radius: rem-calc(20);
-      border-bottom-left-radius: rem-calc(20);
+      border-top-left-radius: rem-calc(16);
+      border-bottom-left-radius: rem-calc(16);
     }
 
     &.active{
@@ -26,10 +26,10 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        margin-top: rem-calc(-5);
-        margin-left: rem-calc(-5);
-        width: rem-calc(10);
-        height: rem-calc(10);
+        margin-top: rem-calc(-4);
+        margin-left: rem-calc(-4);
+        width: rem-calc(8);
+        height: rem-calc(8);
         background-color: $white;
         border: 1px solid $black;
         border-radius: 50%;
@@ -212,6 +212,90 @@
       background-color: $white;
       &:before{
         background-color: $black;
+      }
+    }
+    &.option-color__aqua_black{
+      background-color: $aqua-teal;
+      &:before{
+        background-color: $black;
+      }
+    }
+    &.option-color__black_charcoal{
+      background-color: $black;
+      &:before{
+        background-color: $charcoal;
+      }
+    }
+    &.option-color__black_grey{
+      background-color: $black;
+      &:before{
+        background-color: $grey;
+      }
+    }
+    &.option-color__black_red{
+      background-color: $black;
+      &:before{
+        background-color: $red;
+      }
+    }
+    &.option-color__gold_black{
+      background-color: $gold;
+      &:before{
+        background-color: $black;
+      }
+    }
+    &.option-color__gold_purple{
+      background-color: $gold;
+      &:before{
+        background-color: $purple;
+      }
+    }
+    &.option-color__grey_black{
+      background-color: $grey;
+      &:before{
+        background-color: $black;
+      }
+    }
+    &.option-color__grey_navy{
+      background-color: $grey;
+      &:before{
+        background-color: $navy-blue;
+      }
+    }
+    &.option-color__navy_grey{
+      background-color: $navy-blue;
+      &:before{
+        background-color: $grey;
+      }
+    }
+    &.option-color__orange_black{
+      background-color: $orange;
+      &:before{
+        background-color: $black;
+      }
+    }
+    &.option-color__orange_royal{
+      background-color: $orange;
+      &:before{
+        background-color: $royal-blue;
+      }
+    }
+    &.option-color__purple_black{
+      background-color: $orange;
+      &:before{
+        background-color: $black;
+      }
+    }
+    &.option-color__red_black{
+      background-color: $red;
+      &:before{
+        background-color: $black;
+      }
+    }
+    &.option-color__red_navy{
+      background-color: $red;
+      &:before{
+        background-color: $navy-blue;
       }
     }
   }

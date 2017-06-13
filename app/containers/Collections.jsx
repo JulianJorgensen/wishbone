@@ -11,7 +11,9 @@ class Collections extends React.Component {
 
   handleAddToCart(product) {
     let {dispatch} = this.props;
-    dispatch(actions.startAddorUpdateCartItem(product.selectedVariant, 1));
+    if (product){
+      dispatch(actions.startAddorUpdateCartItem(product.selectedVariant, 1));      
+    }
   }
 
   render() {

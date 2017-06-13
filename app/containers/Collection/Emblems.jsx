@@ -21,16 +21,7 @@ class Emblems extends React.Component {
     let activeProduct = products[activeProductIndex];
 
     let handleOptionChange = (optionName, value) => {
-      activeProduct.options.filter((option) => {
-        return option.name === optionName;
-      })[0].selected = value;
-
-      let updatedActiveProduct = {
-        index: activeProductIndex
-      }
-      this.props.handleOptionChange();
-      dispatch(collectionActions.changeActiveProduct(updatedActiveProduct));
-
+      this.props.handleOptionChange(optionName, value);
       this.setState({
         active: value
       });

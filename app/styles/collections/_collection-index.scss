@@ -138,6 +138,19 @@
     }
   }
 
+  .payment-method-icons{
+    list-style-type: none;
+    margin: 0;
+    li{
+      display: inline-block;
+      margin-right: rem-calc(15);
+      font-size: rem-calc(20);
+      i{
+        color: $grey70;
+      }
+    }
+  }
+
   .error-msg{
     color: $red;
     font-weight: bold;

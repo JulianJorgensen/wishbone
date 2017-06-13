@@ -32,7 +32,7 @@ export var productsReducer = (state = {all: [], active: null}, action) => {
   }
 };
 
-export var collectionsReducer = (state = {all: [], active: null, charity: null}, action) => {
+export var collectionsReducer = (state = {all: [], active: null, charity: null, productIsSelected: false}, action) => {
   switch(action.type) {
     case 'ADD_COLLECTIONS':
       return {

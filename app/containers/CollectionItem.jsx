@@ -14,7 +14,9 @@ class CollectionItem extends React.Component {
 
     let getProductPrice = () => {
       let matchedCollection = utils.searchObjects(id, 'key', collections);
-      return utils.formatAsMoney(matchedCollection.products[0].selectedVariant.price);
+      if (matchedCollection.products.length > 0){
+        return utils.formatAsMoney(matchedCollection.products[0].selectedVariant.price);
+      }
     }
 
     return (

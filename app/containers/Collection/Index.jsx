@@ -33,7 +33,6 @@ class Collection extends React.Component {
     let dispatch;
     let products = [];
 
-    this.handleProductChange = this.handleProductChange.bind(this);
     this.handleEmblemChange = this.handleEmblemChange.bind(this);
     this.handleOptionChange = this.handleOptionChange.bind(this);
     this.handleCharityChange = this.handleCharityChange.bind(this);
@@ -65,24 +64,42 @@ class Collection extends React.Component {
     this.dispatch(collectionActions.clearActiveCollection());
   }
 
-  handleProductChange() {
+  handleProductChange(activeProduct) {
     this.setState({
       imageStatus: 'loading',
       productSelected: true
     });
-  }
 
-  handleEmblemChange() {
-    this.setState({
-      imageStatus: 'loading',
-      emblemSelected: true
-    });
+    // keep the emblem as the selected when selecting new product
+    if (activeProduct){
+      this.handleEmblemChange('Emblem', activeProduct.selectedVariant.title);
+    }
   }
 
   handleOptionChange() {
     this.setState({
       optionSelected: true
     });
+  }
+
+  handleEmblemChange(optionName, value) {
+    let products = shopifyAPI.getCurrentCollection()[1];
+    let activeProductIndex = this.props.activeCollection.activeProduct.index;
+    let activeProduct = products[activeProductIndex];
+
+    this.setState({
+      imageStatus: 'loading',
+      emblemSelected: true
+    });
+
+    // persist the emblem change
+    shopifyAPI.changeProduct(value);
+
+    // update active product index
+    let updatedActiveProduct = {
+      index: activeProductIndex
+    }
+    this.dispatch(collectionActions.changeActiveProduct(updatedActiveProduct));
   }
 
   handleCharityChange() {
@@ -121,19 +138,17 @@ class Collection extends React.Component {
         }
       }
 
-      console.log('>> activeProduct: ', activeProduct);
-
       return (
         <div>
           <div className="container">
             <div className="row">
               <div className="small-12 medium-7 column">
                 <div className="active-product-image">
-                  <img
+                  {/* <img
                     src={selectedVariantImage.variants[7].src}
                     onLoad={this.handleImageLoaded.bind(this)}
                     onError={this.handleImageErrored.bind(this)}
-                    />
+                    /> */}
                   {this.state.imageStatus === 'loading' ? <Loader /> : '' }
                 </div>
               </div>
@@ -142,7 +157,7 @@ class Collection extends React.Component {
                 <div className="collection-info">
                   {renderDescription()}
 
-                  <Products error={this.state.showError && !this.state.productSelected} handleOptionChange={this.handleProductChange} showHeadline={true} />
+                  <Products error={this.state.showError && !this.state.productSelected} handleOptionChange={() => this.handleProductChange(activeProduct)} showHeadline={true} />
 
                   <Emblems error={this.state.showError && !this.state.emblemSelected} handleOptionChange={this.handleEmblemChange} />
 
@@ -166,7 +181,13 @@ class Collection extends React.Component {
                     }}
                     className="button large add-to-cart">Add To Cart</button>
                     <div className={`error-msg ${this.state.showError && (!this.state.productSelected || !this.state.emblemSelected || !this.state.charitySelected) ? 'active' : ''}`}>Please make selections above to continue.</div>
-                  <img src="/images/credit-cards.png" alt="Accepted credit cards" />
+                    <ul className="payment-method-icons">
+                      <li><i className="fa fa-cc-visa"></i></li>
+                      <li><i className="fa fa-cc-mastercard"></i></li>
+                      <li><i className="fa fa-cc-discover"></i></li>
+                      <li><i className="fa fa-cc-amex"></i></li>
+                      <li><i className="fa fa-cc-paypal"></i></li>
+                    </ul>
                 </div>
               </div>
             </div>

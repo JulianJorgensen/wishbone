@@ -15,7 +15,9 @@ class Index extends React.Component {
 
   handleAddToCart(product) {
     let {dispatch} = this.props;
-    dispatch(actions.startAddorUpdateCartItem(product.selectedVariant, 1));
+    if (product){
+      dispatch(actions.startAddorUpdateCartItem(product.selectedVariant, 1));      
+    }
   }
 
   render() {
@@ -26,7 +28,7 @@ class Index extends React.Component {
       return (
         <div>
           <div className="homepage-hero">
-            GOOD LUCK. GOOD STYLE. GOOD CAUSE.
+            <img src="/images/good-luck-good-cause.png" />
             <div className="subheader">Customize your lucky Wishbone Hat. 50% of profits go to charity you choose.</div>
             <Link href="#hats" className="button hollow">View Hat Styles</Link>
             <Link href="#hats" className="arrow-down"><i className="fa fa-angle-down" aria-hidden="true"></i></Link>
