@@ -200,7 +200,10 @@
     }
     &.option-color__green-tiger-camo,
     &.option-color__green-camo{
-      background-color: $green-tiger-camo;
+      background-color: $green-tiger-camo-grey;
+      &:before{
+        background-color: $green-tiger-camo;
+      }
     }
     &.option-color__black_white{
       background-color: $black;
