@@ -144,11 +144,11 @@ class Collection extends React.Component {
             <div className="row">
               <div className="small-12 medium-7 column">
                 <div className="active-product-image">
-                  {/* <img
+                  <img
                     src={selectedVariantImage.variants[7].src}
                     onLoad={this.handleImageLoaded.bind(this)}
                     onError={this.handleImageErrored.bind(this)}
-                    /> */}
+                    />
                   {this.state.imageStatus === 'loading' ? <Loader /> : '' }
                 </div>
               </div>
