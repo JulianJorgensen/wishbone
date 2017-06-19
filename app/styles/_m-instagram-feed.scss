@@ -2,10 +2,13 @@
   display: flex;
   flex-wrap: wrap;
   .instagram-feed-item{
-    width: 16.667%;
+    width: 50%;
     height: rem-calc(220);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+    @include breakpoint(large){
+      width: 16.667%;
+    }
   }
 }

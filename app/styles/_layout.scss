@@ -37,6 +37,15 @@ body{
     color: $grey60;
   }
 
+  .footer-column{
+    @include flex-grid-column(12);
+    margin-top: rem-calc(30);
+    @include breakpoint(medium){
+      margin-top: 0;
+      @include flex-grid-column(4);
+    }
+  }
+
   .footer-wishbone{
     text-align: center;
     padding-bottom: rem-calc(50);

@@ -14,6 +14,10 @@
 
   #site-logo{
     flex-grow: 1;
+    max-width: 80%;
+    @include breakpoint(large){
+      max-width: auto;
+    }
   }
 
   #site-nav{
@@ -25,6 +29,42 @@
       display: inline-block;
       text-transform: uppercase;
       margin-left: rem-calc(30);
+    }
+  }
+
+  .mobile-nav-icon{
+    font-size: rem-calc(30);
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 999;
+    @include breakpoint(large){
+      display: none;
+    }
+  }
+
+  #mobile-nav{
+    background-color: $white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    text-align: center;
+    font-size: rem-calc(20);
+    z-index: 998;
+    li{
+      a{
+        color: $black;
+      }
+      margin-bottom: rem-calc(15);
+      &:first-child{
+        margin-top: rem-calc(30);
+      }
+      &:last-child{
+        margin-bottom: rem-calc(30);
+      }
     }
   }
 }

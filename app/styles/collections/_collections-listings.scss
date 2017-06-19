@@ -41,7 +41,11 @@
   margin-bottom: rem-calc(60);
 
   .collection-item{
-    @include flex-grid-column(3, 20);
+    @include flex-grid-column(6, 20);
+    @include breakpoint(large){
+      @include flex-grid-column(3, 20);
+    }
+
     margin-bottom: rem-calc(20);
 
     .collection-item-inner{

@@ -39,8 +39,6 @@ class CartItem extends React.Component {
             ><span>+</span><span className="hide">Increment</span></button>
           </div>
         )
-      }else{
-        return (<div className="cart-item__remove" onClick={() => {dispatch(actions.updateCartItem(item, 0, true))}}>Remove</div>)
       }
     }
 
@@ -54,7 +52,7 @@ class CartItem extends React.Component {
           </div>
           <div className="cart-item__content-row">
             {renderQuantity()}
-            <span className="cart-item__price">{utils.formatAsMoney(item.price*quantity)}</span>
+            <span className="cart-item__price">{item.title != 'Charities' ? utils.formatAsMoney(item.price*quantity) : ''}</span>
           </div>
         </div>
       </div>

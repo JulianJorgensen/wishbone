@@ -284,7 +284,7 @@
       }
     }
     &.option-color__purple_black{
-      background-color: $orange;
+      background-color: $purple;
       &:before{
         background-color: $black;
       }
@@ -299,6 +299,12 @@
       background-color: $red;
       &:before{
         background-color: $navy-blue;
+      }
+    }
+    &.option-color__grey_red{
+      background-color: $grey;
+      &:before{
+        background-color: $red;
       }
     }
   }

@@ -58,9 +58,6 @@ class Products extends React.Component {
         <div className="option-colors">
           {products.map((product, index) => {
             let title = product.title.split(' - ').slice(-1)[0];
-            // console.log('--------------------');
-            // console.log('collections: ', collections);
-            // console.log('productIsSelected? : ', collections.productIsSelected);
             return (
               <div data-tip={title} key={index} className={`option-color option-color__${title.replace(/\s+/g, '-').replace('-/-', '_').toLowerCase()} ${(activeProductIndex == index) && collections.productIsSelected ? 'active' : ''}`} onClick={(event) => {
                 handleProductChange(index);
