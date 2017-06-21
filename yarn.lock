@@ -5372,6 +5372,10 @@ react-addons-test-utils@^15.4.2:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
+react-collapsible@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-collapsible/-/react-collapsible-1.4.0.tgz#76571edc09877a3f3d1b2298d6c9ccee9421935e"
+
 react-document-meta@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-document-meta/-/react-document-meta-2.1.1.tgz#f7398b10f062a3a74b91c4d8c8853e715126e4cb"

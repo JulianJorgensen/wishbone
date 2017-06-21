@@ -1,9 +1,49 @@
 .page-hat{
+  #main-container{
+    margin-top: rem-calc(15);
+  }
+
+  #main-container .container{
+    padding: rem-calc(15);
+  }
+
+  .accordion{
+    border-top: 1px solid $grey80;
+    border-bottom: 1px solid $grey80;
+    padding: rem-calc(5);
+    color: $grey50;
+
+    .Collapsible__trigger{
+      display: block;
+      position: relative;
+      cursor: pointer;
+      &:after{
+        content: '\f0da';
+        font-family: 'FontAwesome';
+        position: absolute;
+        right: 0;
+        color: $black;
+      }
+
+      &.is-open{
+        &:after{
+          content: '\f0d7';
+        }
+      }
+    }
+  }
+
   .collection-title{
-    text-transform: uppercase;
-    color: $grey40;
+    color: $black;
     font-weight: bold;
     font-size: rem-calc(30);
+    margin-bottom: rem-calc(5);
+
+    @include breakpoint(large){
+      text-transform: uppercase;
+      color: $grey40;
+      margin-bottom: rem-calc(15);
+    }
   }
 
   .collection-info{
@@ -47,7 +87,12 @@
       color: $primary-color;
       font-size: rem-calc(25);
       font-weight: bold;
-      margin-bottom: rem-calc(30);
+      margin-bottom: rem-calc(15);
+      margin-top: rem-calc(25);
+      text-align: center;
+      @include breakpoint(large){
+        text-align: left;
+      }
     }
 
     .charities-wrapper{
@@ -96,6 +141,11 @@
     }
   }
 
+  .product-options{
+    width: rem-calc(150);
+    margin-bottom: rem-calc(15);
+  }
+
   .emblem-colors{
     margin-bottom: rem-calc(30);
     .option-colors{
@@ -138,13 +188,28 @@
     }
   }
 
+  .add-to-cart-wrapper{
+    text-align: center;
+    @include breakpoint(large){
+      text-align: left;
+    }
+  }
+
   .payment-method-icons{
     list-style-type: none;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    @include breakpoint(large){
+      justify-content: flex-start;
+    }
+
     li{
-      display: inline-block;
       margin-right: rem-calc(15);
       font-size: rem-calc(20);
+      &:last-child{
+        margin-right: 0;
+      }
       i{
         color: $grey70;
       }
@@ -155,9 +220,14 @@
     color: $red;
     font-weight: bold;
     display: none;
+    text-align: center;
     &.active{
       display: block;
       padding-bottom: rem-calc(20);
+    }
+
+    @include breakpoint(large){
+      text-align: left;
     }
   }
 }

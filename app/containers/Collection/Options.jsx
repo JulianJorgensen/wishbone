@@ -31,7 +31,10 @@ class Options extends React.Component {
     return (
       <div className="product-options">
         {activeProduct.options.map((option, index) => {
-          if (option.name != "Size" && option.name != "Title" && option.name != "Emblem") {
+          console.log('active product: ', activeProduct);
+          console.log('option name: ', option.name);
+          if (option.name != "Title" && option.name != "Emblem") {
+            console.log('selected o name: ', option.name);
             return (
               <select key={index} name={option.name} value={option.selected} onChange={(event) => {
                 handleOptionChange(option.name, event.target.value);

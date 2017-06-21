@@ -10,6 +10,7 @@ import shopifyAPI from 'shopifyAPI';
 import Loader from 'Loader';
 import InstagramFeed from 'InstagramFeed';
 import ReactTooltip from 'react-tooltip';
+import Collapsible from 'react-collapsible';
 
 import Products from 'Collection/Products';
 import Options from 'Collection/Options';
@@ -80,6 +81,11 @@ class Collection extends React.Component {
     this.setState({
       optionSelected: true
     });
+
+    // keep the emblem as the selected when selecting new product
+    if (activeProduct){
+      this.handleEmblemChange('Emblem', activeProduct.selectedVariant.title);
+    }
   }
 
   handleEmblemChange(optionName, value) {
@@ -131,7 +137,7 @@ class Collection extends React.Component {
         if (body_html){
           return (
             <div className="description">
-              <h5 className="collection__subheadline">Description</h5>
+              <h5 className="collection__subheadline show-for-medium">Description</h5>
               <div dangerouslySetInnerHTML={{__html: body_html}}></div>
             </div>
           )
@@ -141,6 +147,14 @@ class Collection extends React.Component {
       return (
         <div>
           <div className="container">
+            <h1 className="collection-title hide-for-medium">{title}</h1>
+            <div className="hide-for-medium">
+              <div className="accordion">
+                <Collapsible trigger="Description" transitionTime={200}>
+                  {renderDescription()}
+                </Collapsible>
+              </div>
+            </div>
             <div className="row">
               <div className="small-12 medium-7 column">
                 <div className="active-product-image">
@@ -153,9 +167,9 @@ class Collection extends React.Component {
                 </div>
               </div>
               <div className="small-12 medium-5 column">
-                <h1 className="collection-title">{title}</h1>
+                <h1 className="collection-title show-for-medium">{title}</h1>
                 <div className="collection-info">
-                  {renderDescription()}
+                  <div className="show-for-medium">{renderDescription()}</div>
 
                   <Products error={this.state.showError && !this.state.productSelected} handleOptionChange={() => this.handleProductChange(activeProduct)} showHeadline={true} />
 
@@ -169,17 +183,19 @@ class Collection extends React.Component {
 
                   <div className="product-price">{utils.formatAsMoney(selectedVariant.price)}</div>
 
-                  <button
-                    onClick={()=>{
-                      if (this.state.productSelected && this.state.emblemSelected && this.state.charitySelected){
-                        dispatch(cartActions.startAddorUpdateCartItem(activeProduct.selectedVariant, 1));
-                      }else{
-                        this.setState({
-                          showError: true
-                        });
-                      }
-                    }}
-                    className="button large add-to-cart">Add To Cart</button>
+                  <div className="add-to-cart-wrapper">
+                    <button
+                      onClick={()=>{
+                        if (this.state.productSelected && this.state.emblemSelected && this.state.charitySelected){
+                          dispatch(cartActions.startAddorUpdateCartItem(activeProduct.selectedVariant, 1));
+                        }else{
+                          this.setState({
+                            showError: true
+                          });
+                        }
+                      }}
+                      className="button large add-to-cart">Add To Cart</button>
+                    </div>
                     <div className={`error-msg ${this.state.showError && (!this.state.productSelected || !this.state.emblemSelected || !this.state.charitySelected) ? 'active' : ''}`}>Please make selections above to continue.</div>
                     <ul className="payment-method-icons">
                       <li><i className="fa fa-cc-visa"></i></li>
