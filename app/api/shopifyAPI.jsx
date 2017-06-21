@@ -1,6 +1,7 @@
 let React = require('react');
 let ShopifyBuy = require('shopify-buy');
 let store = require('configureStore').configure();
+import axios from 'axios';
 
 class shopifyAPI {
   constructor() {
@@ -13,6 +14,26 @@ class shopifyAPI {
     this.cart = {};
     this.collection = {};
     this.products = [];
+    this.pages = [];
+  }
+
+  fetchPageContent(){
+    axios.get('/shopify/get-pages')
+    .then((response) => {
+      this.pages = response.data;
+    })
+    .catch(error => console.log('Error: ', error));
+  }
+
+  getPage(pageName){
+    let matchedPage = [];
+    this.pages.map((page) => {
+      let handle = page.handle;
+      if (handle === pageName){
+        matchedPage.push(page);
+      }
+    });
+    return matchedPage[0];
   }
 
   activateCollection(collectionId, activeProductIndex){

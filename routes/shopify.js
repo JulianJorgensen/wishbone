@@ -26,6 +26,16 @@ router.route('/get-news-item')
     .catch(err => console.error(err));
   });
 
+// Get page content
+router.route('/get-pages')
+  .get(function (req, res) {
+    shopify.page.list()
+    .then(data => {
+      res.status(200).send(data);
+    })
+    .catch(err => console.error(err));
+  });
+
 
 module.exports = router;
 

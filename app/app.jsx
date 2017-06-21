@@ -23,6 +23,9 @@ store.subscribe(() => {
 store.dispatch(productActions.startAddProducts());
 store.dispatch(collectionActions.startAddCollections());
 
+// fetch pages from shopify
+shopifyAPI.fetchPageContent();
+
 // create shopify cart instance based on last session (based on localStorage)
 if(localStorage.getItem('lastCartId')) {
   shopifyAPI.restoreCart().then((localCart) => {
