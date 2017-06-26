@@ -38,7 +38,7 @@ class NewsItem extends React.Component {
       }
 
       return (
-        <div className="container">
+        <div className="container page">
           <h1>{data.title}</h1>
           <div className="body" dangerouslySetInnerHTML={createMarkup()}>
           </div>

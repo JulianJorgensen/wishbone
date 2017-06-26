@@ -18,8 +18,7 @@ class shopifyAPI {
   }
 
   fetchPageContent(){
-    axios.get('/shopify/get-pages')
-    .then((response) => {
+    return axios.get('/shopify/get-pages').then((response) => {
       this.pages = response.data;
     })
     .catch(error => console.log('Error: ', error));
@@ -27,6 +26,7 @@ class shopifyAPI {
 
   getPage(pageName){
     let matchedPage = [];
+    console.log('pages: ', this.pages);
     this.pages.map((page) => {
       let handle = page.handle;
       if (handle === pageName){

@@ -64,11 +64,14 @@
     }
 
     .collection-item-image{
-      height: rem-calc(200);
+      height: rem-calc(140);
       width: 100%;
       background-position: center center;
       background-size: contain;
       background-repeat: no-repeat;
+      @include breakpoint(medium){
+        height: rem-calc(200);
+      }
     }
 
     .price{

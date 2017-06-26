@@ -65,15 +65,15 @@ class Collection extends React.Component {
     this.dispatch(collectionActions.clearActiveCollection());
   }
 
-  handleProductChange(activeProduct) {
+  handleProductChange() {
     this.setState({
       imageStatus: 'loading',
       productSelected: true
     });
 
     // keep the emblem as the selected when selecting new product
-    if (activeProduct){
-      this.handleEmblemChange('Emblem', activeProduct.selectedVariant.title);
+    if (this.state.emblemSelected){
+      this.handleEmblemChange('Emblem', this.state.emblemSelected);
     }
   }
 
@@ -83,8 +83,8 @@ class Collection extends React.Component {
     });
 
     // keep the emblem as the selected when selecting new product
-    if (activeProduct){
-      this.handleEmblemChange('Emblem', activeProduct.selectedVariant.title);
+    if (this.state.emblemSelected){
+      this.handleEmblemChange('Emblem', this.state.emblemSelected);
     }
   }
 
@@ -95,7 +95,7 @@ class Collection extends React.Component {
 
     this.setState({
       imageStatus: 'loading',
-      emblemSelected: true
+      emblemSelected: value
     });
 
     // persist the emblem change
@@ -171,7 +171,7 @@ class Collection extends React.Component {
                 <div className="collection-info">
                   <div className="show-for-medium">{renderDescription()}</div>
 
-                  <Products error={this.state.showError && !this.state.productSelected} handleOptionChange={() => this.handleProductChange(activeProduct)} showHeadline={true} />
+                  <Products error={this.state.showError && !this.state.productSelected} handleOptionChange={() => this.handleProductChange} showHeadline={true} />
 
                   <Emblems error={this.state.showError && !this.state.emblemSelected} handleOptionChange={this.handleEmblemChange} />
 

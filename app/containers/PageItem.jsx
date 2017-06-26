@@ -14,7 +14,10 @@ class PageItem extends React.Component {
   }
 
   setPageContent(props){
-    console.log('setting page content: ', shopifyAPI.getPage(props.location.pathname.slice(1)));
+    let path = props.location.pathname.slice(1);
+    console.log('props: ', props);
+    console.log('path: ', path);
+    console.log('setting page content: ', shopifyAPI.getPage(path));
     this.setState({
       data: shopifyAPI.getPage(props.location.pathname.slice(1))
     });
@@ -25,7 +28,11 @@ class PageItem extends React.Component {
   }
 
   componentWillMount(){
-    this.setPageContent(this.props);
+    // fetch pages from shopify
+    shopifyAPI.fetchPageContent().then(() => {
+      // set content
+      this.setPageContent(this.props);
+    });
   }
 
   render() {
@@ -37,7 +44,7 @@ class PageItem extends React.Component {
       }
 
       return (
-        <div className="container">
+        <div className="container page">
           <h1>{data.title}</h1>
           <div className="body" dangerouslySetInnerHTML={createMarkup()}></div>
         </div>

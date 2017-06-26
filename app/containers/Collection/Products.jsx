@@ -35,6 +35,8 @@ class Products extends React.Component {
         index: index
       }
 
+      console.log('handling product change..', index);
+
       this.setState({
         selected: true
       });
