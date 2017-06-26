@@ -34,6 +34,7 @@ class Collection extends React.Component {
     let dispatch;
     let products = [];
 
+    this.handleProductChange = this.handleProductChange.bind(this);
     this.handleEmblemChange = this.handleEmblemChange.bind(this);
     this.handleOptionChange = this.handleOptionChange.bind(this);
     this.handleCharityChange = this.handleCharityChange.bind(this);
@@ -66,10 +67,10 @@ class Collection extends React.Component {
   }
 
   handleProductChange() {
-    this.setState({
-      imageStatus: 'loading',
-      productSelected: true
-    });
+    // this.setState({
+    //   imageStatus: 'loading',
+    //   productSelected: true
+    // });
 
     // keep the emblem as the selected when selecting new product
     if (this.state.emblemSelected){
@@ -171,7 +172,7 @@ class Collection extends React.Component {
                 <div className="collection-info">
                   <div className="show-for-medium">{renderDescription()}</div>
 
-                  <Products error={this.state.showError && !this.state.productSelected} handleOptionChange={() => this.handleProductChange} showHeadline={true} />
+                  <Products error={this.state.showError && !this.state.productSelected} handleOptionChange={this.handleProductChange} showHeadline={true} />
 
                   <Emblems error={this.state.showError && !this.state.emblemSelected} handleOptionChange={this.handleEmblemChange} />
 

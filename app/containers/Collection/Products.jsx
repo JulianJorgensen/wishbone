@@ -9,7 +9,7 @@ class Products extends React.Component {
   constructor(){
     super();
 
-    this.state = {
+    let state = {
       selected: false
     }
   }
@@ -34,8 +34,6 @@ class Products extends React.Component {
       let updatedActiveProduct = {
         index: index
       }
-
-      console.log('handling product change..', index);
 
       this.setState({
         selected: true
