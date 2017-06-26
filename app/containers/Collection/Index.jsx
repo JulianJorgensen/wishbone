@@ -67,10 +67,10 @@ class Collection extends React.Component {
   }
 
   handleProductChange() {
-    // this.setState({
-    //   imageStatus: 'loading',
-    //   productSelected: true
-    // });
+    this.setState({
+      imageStatus: 'loading',
+      productSelected: true
+    });
 
     // keep the emblem as the selected when selecting new product
     if (this.state.emblemSelected){
