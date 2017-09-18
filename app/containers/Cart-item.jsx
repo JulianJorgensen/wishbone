@@ -51,7 +51,7 @@ class CartItem extends React.Component {
             <span className="cart-item__title">{item.title}</span>
           </div>
           <div className="cart-item__content-row">
-            {renderQuantity()}
+            {item.title !== 'Charity' ? renderQuantity() : ''}
             <span className="cart-item__price">{item.title != 'Charities' ? utils.formatAsMoney(item.price*quantity) : ''}</span>
           </div>
         </div>
