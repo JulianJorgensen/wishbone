@@ -1,9 +1,8 @@
-.page-home{
-  #main-container{
+.page-home {
+  #main-container {
     margin-top: 0;
   }
-
-  .homepage-hero{
+  .homepage-hero {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,43 +10,36 @@
     height: calc(100vh - 200px);
     width: 100%;
     background-color: $grey40;
-    background-image: url('/images/homepage_hero_image.jpg');
+    background-image: url('/images/Wishbone_Home_Image_2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
+    background-position: center top;
     margin-bottom: rem-calc(30);
     padding: rem-calc(30);
     text-align: center;
     font-weight: bold;
-
-    @include breakpoint(medium){
-      background-position: center center;
+    @include breakpoint(medium) {
       text-align: left;
       height: calc(100vh - 80px);
     }
-
-    @include breakpoint(large){
+    @include breakpoint(large) {
       background-attachment: fixed;
     }
-
     color: white;
     font-size: rem-calc(40);
     font-weight: bold;
-
-    .subheader{
+    .subheader {
       color: $white;
       font-size: rem-calc(14);
       margin-top: rem-calc(30);
       margin-bottom: rem-calc(30);
     }
-
-    .button{
+    .button {
       color: white;
       border-color: $grey60;
       padding: rem-calc(15 20);
     }
-
-    .arrow-down{
+    .arrow-down {
       position: absolute;
       left: 50%;
       margin-left: rem-calc(-19);
@@ -56,8 +48,7 @@
       font-size: rem-calc(50);
     }
   }
-
-  .homepage-hero-bottom{
+  .homepage-hero-bottom {
     height: rem-calc(450);
     width: 100%;
     background-color: $grey40;
@@ -65,45 +56,42 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    @include breakpoint(large){
+    @include breakpoint(large) {
       height: rem-calc(650);
       background-attachment: fixed;
     }
   }
-
-  .hat-styles-header{
+  .hat-styles-header {
     font-size: rem-calc(14);
     text-transform: uppercase;
     text-align: center;
     margin-top: rem-calc(50);
   }
-  .hat-styles-subheader{
+  .hat-styles-subheader {
     font-size: rem-calc(14);
     color: $grey60;
     text-align: center;
     margin-bottom: rem-calc(50);
-  }
-
-  // news section
-  .news{
+  } // news section
+  .news {
     @include flex-grid-row();
     padding-bottom: rem-calc(30);
-
-    .news-item{
-      @include flex-grid-column(6, 20);
-      .news-item-inner{
+    .news-item {
+      @include flex-grid-column(6,
+      20);
+      .news-item-inner {
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
         height: rem-calc(260);
         position: relative;
-        a{
+        a {
           position: absolute;
           left: 0;
           top: 0;
           width: 100%;
           height: 100%;
-          .link-content{
+          .link-content {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -114,10 +102,10 @@
           }
         }
       }
-      &#news-item-wishbone .news-item-inner{
+      &#news-item-wishbone .news-item-inner {
         background-image: url('/images/news1-bg.jpg');
       }
-      &#news-item-charities .news-item-inner{
+      &#news-item-charities .news-item-inner {
         background-image: url('/images/news2-bg.jpg');
       }
     }

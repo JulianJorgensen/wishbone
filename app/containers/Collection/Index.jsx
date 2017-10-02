@@ -1,10 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router';
-let {connect} = require('react-redux');
+import { Link } from 'react-router';
+let { connect } = require('react-redux');
 let productActions = require('productActions');
 let collectionActions = require('collectionActions');
 let cartActions = require('cartActions');
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
 import utils from 'utils';
 import shopifyAPI from 'shopifyAPI';
 import Loader from 'Loader';
@@ -19,7 +19,7 @@ import Sizes from 'Collection/Sizes';
 import Charity from 'Collection/Charity';
 
 class Collection extends React.Component {
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
@@ -40,15 +40,15 @@ class Collection extends React.Component {
     this.handleCharityChange = this.handleCharityChange.bind(this);
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.dispatch = this.props.dispatch;
     let collectionId = this.props.params.collectionId;
     let activeProductIndex;
 
-    if (this.props.activeCollection){
+    if (this.props.activeCollection) {
       activeProductIndex = this.props.activeCollection.activeProduct.index;
-      this.setState({productSelected: true});
-    }else{
+      this.setState({ productSelected: true });
+    } else {
       activeProductIndex = 0;
     }
 
@@ -61,7 +61,7 @@ class Collection extends React.Component {
     });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.dispatch(collectionActions.productIsSelected(false));
     this.dispatch(collectionActions.clearActiveCollection());
   }
@@ -73,7 +73,7 @@ class Collection extends React.Component {
     });
 
     // keep the emblem as the selected when selecting new product
-    if (this.state.emblemSelected){
+    if (this.state.emblemSelected) {
       this.handleEmblemChange('Emblem', this.state.emblemSelected);
     }
   }
@@ -84,7 +84,7 @@ class Collection extends React.Component {
     });
 
     // keep the emblem as the selected when selecting new product
-    if (this.state.emblemSelected){
+    if (this.state.emblemSelected) {
       this.handleEmblemChange('Emblem', this.state.emblemSelected);
     }
   }
@@ -124,18 +124,18 @@ class Collection extends React.Component {
   }
 
   render() {
-    let {dispatch, activeCollection} = this.props;
+    let { dispatch, activeCollection } = this.props;
 
     if (this.state.dataFetched) {
       let products = shopifyAPI.getCurrentCollection()[1];
       let activeProductIndex = activeCollection.activeProduct.index;
       let activeProduct = products[activeProductIndex];
 
-      let {collection_id, body_html, title, image} = activeCollection;
-      let {selectedVariant, selectedVariantImage} = activeProduct;
+      let { collection_id, body_html, title, image } = activeCollection;
+      let { selectedVariant, selectedVariantImage } = activeProduct;
 
       let renderDescription = () => {
-        if (body_html){
+        if (body_html) {
           return (
             <div className="description">
               <h5 className="collection__subheadline show-for-medium">Description</h5>
@@ -210,10 +210,10 @@ class Collection extends React.Component {
             </div>
           </div>
           <InstagramFeed />
-          <ReactTooltip />
+          <ReactTooltip multiline={true} className="tooltip" />
         </div>
       )
-    }else{
+    } else {
       return (
         <Loader />
       )

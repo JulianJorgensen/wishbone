@@ -1,8 +1,8 @@
 import React from 'react';
 import Slider from 'react-slick';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 import InstagramFeed from 'InstagramFeed';
-let {connect} = require('react-redux');
+let { connect } = require('react-redux');
 let actions = require('cartActions');
 
 import Loader from 'Loader';
@@ -14,14 +14,14 @@ class Index extends React.Component {
   }
 
   handleAddToCart(product) {
-    let {dispatch} = this.props;
-    if (product){
+    let { dispatch } = this.props;
+    if (product) {
       dispatch(actions.startAddorUpdateCartItem(product.selectedVariant, 1));
     }
   }
 
   render() {
-    let {collections} = this.props;
+    let { collections } = this.props;
     collections = collections.slice(0, 12);
 
     if (collections.length > 0) {
@@ -62,11 +62,10 @@ class Index extends React.Component {
               <div className="news-item-inner"><Link to="/news/226615620"><div className="link-content">About the Charities</div></Link></div>
             </div>
           </div>
-
           <InstagramFeed />
         </div>
       )
-    }else{
+    } else {
       return (
         <Loader />
       )

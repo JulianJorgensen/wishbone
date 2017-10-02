@@ -6,9 +6,9 @@ export var startAddorUpdateCartItem = (productVariant, quantity) => {
     let variantId;
 
     // assign variant id based on is product or cart line item
-    if(productVariant.variant_id){
+    if (productVariant.variant_id) {
       variantId = productVariant.variant_id;
-    }else{
+    } else {
       variantId = productVariant.id;
     }
 
@@ -38,9 +38,10 @@ export var startAddorUpdateCartItem = (productVariant, quantity) => {
     // add active charity if not already in cart
     let collections = getState().collections;
     let selectedCharity = collections.charity;
-    if (selectedCharity){
+    if (selectedCharity) {
+      console.log('cart', cart);
       let charityIsInCart = findCartItemByVariantId(selectedCharity.variant_id);
-      if (!charityIsInCart){
+      if (!charityIsInCart) {
         dispatch(clearCharitiesFromCart());
         dispatch(addToCart(selectedCharity, 1));
       }
@@ -48,16 +49,18 @@ export var startAddorUpdateCartItem = (productVariant, quantity) => {
   }
 };
 
-// add product to cart
+// clear charities from cart
 export var clearCharitiesFromCart = () => {
   return (dispatch, getState) => {
     let cart = getState().cart;
 
     let charitiesInCart = cart.lineItems.filter((item) => {
-      return (item.title === 'Charities');
+      console.log('item.title', item.title);
+      return (item.title === 'Charity');
     });
 
-    if (charitiesInCart.length > 0){
+    console.log('charities in cart', charitiesInCart);
+    if (charitiesInCart.length > 0) {
       charitiesInCart.map((charity) => {
         dispatch(updateCartItem(charity, 0, true));
       });
@@ -73,9 +76,17 @@ export var addToCart = (productVariant, quantity) => {
       let updatedCartItems = updatedCart.lineItems;
       dispatch({ type: 'UPDATE_CART_ITEMS', updatedCartItems });
       dispatch(openCart());
-    }).catch(function (errors) {
+    }).catch(function(errors) {
       console.log('Failed to addToCart', errors);
     });
+  }
+};
+
+// empty cart
+export var emptyCart = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: 'CLEAR_CART_ITEMS' });
+    dispatch(closeCart());
   }
 };
 
@@ -94,9 +105,9 @@ export var updateCartItemsCount = (quantity) => {
     let updatedCartItemsCount = parseInt(cart.lineItemsCount) + parseInt(quantity);
     dispatch({ type: 'UPDATE_CART_ITEMS_COUNT', updatedCartItemsCount });
 
-    if(parseInt(updatedCartItemsCount) < 1) {
+    if (parseInt(updatedCartItemsCount) < 1) {
       dispatch(closeCart());
-    }else{
+    } else {
       dispatch(openCart());
     }
   }
@@ -108,9 +119,9 @@ export var updateCartItem = (selectedCartItem, quantity, remove) => {
     let cart = getState().cart;
 
     let updatedQuantity;
-    if(remove){
+    if (remove) {
       updatedQuantity = 0;
-    }else{
+    } else {
       updatedQuantity = selectedCartItem.quantity + quantity;
     }
 
@@ -131,7 +142,7 @@ export var updateCartItem = (selectedCartItem, quantity, remove) => {
           // return the updated cart item
           updatedCartItems.push(updatedCartItem);
         }
-      }else{
+      } else {
         // return the unmodified item
         updatedCartItems.push(cartItem);
       }

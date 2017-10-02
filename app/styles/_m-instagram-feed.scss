@@ -1,18 +1,32 @@
-.instagram-feed{
+.instagram-feed {
   display: flex;
   flex-wrap: wrap;
-  .instagram-feed-item{
+  .instagram-feed-item {
+    display: none;
     width: 33.3%;
     height: rem-calc(130);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    @include breakpoint(medium){
+    @include breakpoint(medium) {
       height: rem-calc(220);
     }
-    @include breakpoint(large){
+    @include breakpoint(large) {
       width: 16.667%;
+    }
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5),
+    &:nth-child(6),
+    &:nth-child(7),
+    &:nth-child(8),
+    &:nth-child(9),
+    &:nth-child(10),
+    &:nth-child(11),
+    &:nth-child(12),
+    &:nth-child(13) {
+      display: block;
     }
   }
 }
-

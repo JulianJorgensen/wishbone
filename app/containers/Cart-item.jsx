@@ -4,12 +4,12 @@ let { connect } = require('react-redux');
 let actions = require('cartActions');
 
 class CartItem extends React.Component {
-  constructor(){
+  constructor() {
     super();
   }
 
   render() {
-    let {dispatch, item, incrementLineItem, quantity} = this.props;
+    let { dispatch, item, incrementLineItem, quantity } = this.props;
 
     let changeQuantity = (quantity) => {
       // console.log('cart Item object: ', item);
@@ -17,7 +17,7 @@ class CartItem extends React.Component {
     }
 
     let renderQuantity = () => {
-      if (item.title != 'Charities'){
+      if (item.title != 'Charities') {
         return (
           <div className="cart-item__quantity-container">
             <button
@@ -52,7 +52,7 @@ class CartItem extends React.Component {
           </div>
           <div className="cart-item__content-row">
             {item.title !== 'Charity' ? renderQuantity() : ''}
-            <span className="cart-item__price">{item.title != 'Charities' ? utils.formatAsMoney(item.price*quantity) : ''}</span>
+            <span className="cart-item__price">{item.title != 'Charity' ? utils.formatAsMoney(item.price*quantity) : ''}</span>
           </div>
         </div>
       </div>

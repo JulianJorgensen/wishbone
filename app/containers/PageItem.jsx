@@ -1,5 +1,5 @@
 import React from 'react';
-let {connect} = require('react-redux');
+let { connect } = require('react-redux');
 import shopifyAPI from 'shopifyAPI';
 import Loader from 'Loader';
 import axios from 'axios';
@@ -13,7 +13,7 @@ class PageItem extends React.Component {
     }
   }
 
-  setPageContent(props){
+  setPageContent(props) {
     let path = props.location.pathname.slice(1);
     console.log('props: ', props);
     console.log('path: ', path);
@@ -23,11 +23,11 @@ class PageItem extends React.Component {
     });
   }
 
-  componentWillReceiveProps(newProps){
+  componentWillReceiveProps(newProps) {
     this.setPageContent(newProps);
   }
 
-  componentWillMount(){
+  componentWillMount() {
     // fetch pages from shopify
     shopifyAPI.fetchPageContent().then(() => {
       // set content
@@ -36,11 +36,11 @@ class PageItem extends React.Component {
   }
 
   render() {
-    let {data} = this.state;
+    let { data } = this.state;
 
-    if (data){
-      function createMarkup(){
-         return {__html: data.body_html};
+    if (data) {
+      function createMarkup() {
+        return { __html: data.body_html };
       }
 
       return (
@@ -49,7 +49,7 @@ class PageItem extends React.Component {
           <div className="body" dangerouslySetInnerHTML={createMarkup()}></div>
         </div>
       )
-    }else{
+    } else {
       return (
         <Loader />
       )

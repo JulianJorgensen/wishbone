@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link, IndexLink} from 'react-router';
+import { Link, IndexLink } from 'react-router';
 
 class Footer extends React.Component {
-  constructor(){
+  constructor() {
     super();
   }
 
@@ -24,7 +24,7 @@ class Footer extends React.Component {
 
             <div className="footer-column">
               <div className="footer-nav-headline">About Wishbone Hats</div>
-              <p>A great About Us page helps builds trust between you and your customers. The more content you provide about you and your business, the more confident people will be when purchasing from your store.</p>
+              <p></p>
             </div>
 
             <div className="footer-column" id="footer-socialmedia">

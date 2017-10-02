@@ -1,5 +1,5 @@
-export var productsReducer = (state = {all: [], active: null}, action) => {
-  switch(action.type) {
+export var productsReducer = (state = { all: [], active: null }, action) => {
+  switch (action.type) {
     case 'ADD_PRODUCTS':
       return {
         ...state,
@@ -32,8 +32,8 @@ export var productsReducer = (state = {all: [], active: null}, action) => {
   }
 };
 
-export var collectionsReducer = (state = {all: [], active: null, charity: null, productIsSelected: false}, action) => {
-  switch(action.type) {
+export var collectionsReducer = (state = { all: [], active: null, charity: null, productIsSelected: false }, action) => {
+  switch (action.type) {
     case 'ADD_COLLECTIONS':
       return {
         ...state,
@@ -72,8 +72,8 @@ export var collectionsReducer = (state = {all: [], active: null, charity: null, 
   }
 };
 
-export var cartReducer = (state = {isOpen: false, lineItems: []}, action) => {
-  switch(action.type) {
+export var cartReducer = (state = { isOpen: false, lineItems: [] }, action) => {
+  switch (action.type) {
     // case 'RESTORE_PREVIOUS_CART':
     //   return action.remoteCart;
     case 'SET_INITIAL_CART_STATE':
@@ -105,12 +105,17 @@ export var cartReducer = (state = {isOpen: false, lineItems: []}, action) => {
         ...state,
         isOpen: false
       };
+    case 'CLEAR_CART_ITEMS':
+      return {
+        ...state,
+        lineItems: []
+      };
     default:
       return state;
   }
 };
 
-export var navReducer = (state = {showClose: false, showNav: false}, action) => {
+export var navReducer = (state = { showClose: false, showNav: false }, action) => {
   switch (action.type) {
     case 'TOGGLE_NAV_ICON':
       return {

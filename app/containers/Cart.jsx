@@ -8,11 +8,10 @@ import CartItem from 'Cart-item';
 import utils from 'utils';
 
 class Cart extends React.Component {
-  constructor(){
+  constructor() {
     super();
 
     let dispatch;
-    let handleCheckout = this.handleCheckout();
   }
 
   componentWillMount() {
@@ -24,13 +23,14 @@ class Cart extends React.Component {
   }
 
   handleCheckout() {
+    this.dispatch(actions.emptyCart());
     window.open(shopifyAPI.cart.checkoutUrl, '_self');
   }
 
   render() {
-    let {isOpen, lineItems, lineItemCount, subtotal} = this.props.cart;
+    let { isOpen, lineItems, lineItemCount, subtotal } = this.props.cart;
     let renderLineItems = () => {
-      if (lineItems.length > 0){
+      if (lineItems.length > 0) {
         return lineItems.map(lineItem => {
           return <CartItem
             key={lineItem.id}
@@ -74,7 +74,7 @@ class Cart extends React.Component {
                 id="checkout"
                 name="checkout"
                 value="Checkout"
-                onClick={this.handleCheckout}
+                onClick={() => this.handleCheckout()}
               />
             </div>
           </div>

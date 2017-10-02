@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import shopifyAPI from 'shopifyAPI';
 
 import fonts from './fonts/fonts.css';
@@ -24,15 +24,9 @@ store.dispatch(productActions.startAddProducts());
 store.dispatch(collectionActions.startAddCollections());
 
 // create shopify cart instance based on last session (based on localStorage)
-if(localStorage.getItem('lastCartId')) {
-  shopifyAPI.restoreCart().then((localCart) => {
-    store.dispatch({ type: 'SET_INITIAL_CART_STATE', localCart });
-  });
-}else{
-  shopifyAPI.createCart().then((localCart) => {
-    store.dispatch({ type: 'SET_INITIAL_CART_STATE', localCart });
-  });
-}
+shopifyAPI.createCart().then((localCart) => {
+  store.dispatch({ type: 'SET_INITIAL_CART_STATE', localCart });
+});
 
 // App css
 // require('style!css!sass!applicationStyles')
