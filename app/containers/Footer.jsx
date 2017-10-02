@@ -24,7 +24,9 @@ class Footer extends React.Component {
 
             <div className="footer-column">
               <div className="footer-nav-headline">About Wishbone Hats</div>
-              <p></p>
+              <p>Good Luck. Good Style. Good Cause.</p>
+              <p>Everyone could use a little luck – so why not bring a little luck your way in style. Customize your lucky Wishbone hat in your favorite colors. $5 of every sale goes to the charity you choose.</p>
+              <p>Every year Wishbone Hats will select 6 different charities to choose from. $5 will go to the charity selected on every purchase order.</p>
             </div>
 
             <div className="footer-column" id="footer-socialmedia">
