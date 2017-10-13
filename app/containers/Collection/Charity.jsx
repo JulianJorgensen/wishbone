@@ -45,7 +45,7 @@ class Charity extends React.Component {
       }, 20);
       return (
         <div className="charities-wrapper">
-          <h4 className={`collection__subheadline ${this.props.error ? 'error' : ''}`}>Select a charity <small className="font-orange nobr">- 50% of profits go to the charity you choose.</small></h4>
+          <h4 className={`collection__subheadline ${this.props.error ? 'error' : ''}`}>Please select a charity. <small className="font-orange nobr">- $5 will go to the charity you choose!</small></h4>
           <div className="charities">
             {charities.map((charity) => {
               let association = charity.optionValues[0].value;
