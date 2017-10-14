@@ -65,7 +65,7 @@ export var clearCharitiesFromCart = () => {
         dispatch(updateCartItem(charity, 0, true));
       });
     }
-    dispatch({ type: 'SET_CHARITY', null });
+    dispatch({ type: 'SET_CHARITY' });
   }
 };
 
@@ -86,11 +86,31 @@ export var addToCart = (productVariant, quantity) => {
 export var emptyCart = () => {
   return (dispatch, getState) => {
     dispatch({ type: 'CLEAR_CART_ITEMS' });
-    dispatch(closeCart());
+    dispatch({ type: 'CLOSE_CART' });
   }
 };
 
-// update cart subtotal
+// cart.clearLineItems()
+//   .then(function (cart) {
+//     // do something with updated cart
+//   });
+
+// clear cart
+export var clearCart = () => {
+ return (dispatch, getState) => {
+
+  shopifyAPI.cart.clearLineItems()
+    .then(function (updatedCart) {
+      let updatedCartItems = updatedCart.lineItems;
+      dispatch({ type: 'UPDATE_CART_ITEMS', updatedCartItems });
+      dispatch(updateCartSubtotal());
+    })
+    .catch(function(errors) {
+      console.log('coundnt remove items: ', errors);
+    })
+  }
+}
+
 export var updateCartSubtotal = () => {
   return (dispatch, getState) => {
     let newSubtotal = shopifyAPI.cart.subtotal;

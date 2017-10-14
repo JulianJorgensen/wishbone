@@ -72,7 +72,7 @@ export var collectionsReducer = (state = { all: [], active: null, charity: null,
   }
 };
 
-export var cartReducer = (state = { isOpen: false, lineItems: [] }, action) => {
+export var cartReducer = (state = { isOpen: false, lineItems: []}, action) => {
   switch (action.type) {
     // case 'RESTORE_PREVIOUS_CART':
     //   return action.remoteCart;
