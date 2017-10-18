@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import "babel-polyfill";
 import path from 'path';
 import Merge from 'webpack-merge';
 import StatsPlugin from 'stats-webpack-plugin';
@@ -30,16 +31,19 @@ const VENDOR_LIBS = [
   'react-document-meta'
 ];
 
+const ROOT_PATH = path.resolve(__dirname);
+const APP_PATH = path.resolve(ROOT_PATH, 'app/app');
+const BUILD_PATH = path.resolve(ROOT_PATH, 'public');
 
 // Webpack config for both production and development environments
 // ====================
 const BASE_CONFIG = {
   entry: {
-    bundle: path.resolve(__dirname, 'app/app'),
+    bundle: ['babel-polyfill', APP_PATH],
     vendor: VENDOR_LIBS
   },
   output: {
-    path: path.join(__dirname, 'public'),
+    path: BUILD_PATH,
     publicPath: '/'
   },
   module: {
