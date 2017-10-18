@@ -65,7 +65,7 @@ export var clearCharitiesFromCart = () => {
         dispatch(updateCartItem(charity, 0, true));
       });
     }
-    dispatch({ type: 'SET_CHARITY', null });
+    dispatch({ type: 'SET_CHARITY', undefined });
   }
 };
 
