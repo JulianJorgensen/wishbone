@@ -39,7 +39,7 @@ const BUILD_PATH = path.resolve(ROOT_PATH, 'public');
 // ====================
 const BASE_CONFIG = {
   entry: {
-    bundle: ['babel-polyfill', APP_PATH],
+    bundle: ['babel-polyfill', 'whatwg-fetch', APP_PATH],
     vendor: VENDOR_LIBS
   },
   output: {
