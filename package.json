@@ -10,7 +10,7 @@
     "build": "yarn clean && webpack",
     "serve": "webpack-dev-server",
     "start": "node server.js",
-    "heroku-postbuild": "webpack"
+    "heroku-postbuild": "NODE_ENV=production webpack"
   },
   "author": "Julian Jorgensen",
   "license": "MIT",
