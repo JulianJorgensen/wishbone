@@ -1,4 +1,4 @@
 {
   "presets": ["babel-preset-env", "react", "stage-0"],
-  "plugins": ["transform-decorators-legacy"]
+  "plugins": ["transform-decorators-legacy", "es6-promise"]
 }

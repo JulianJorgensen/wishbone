@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import shopifyAPI from 'shopifyAPI';
-require('es6-promise').polyfill();
-
 import fonts from './fonts/fonts.css';
 import 'applicationStyles';
 
