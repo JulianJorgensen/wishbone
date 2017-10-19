@@ -90,6 +90,22 @@ export var emptyCart = () => {
   }
 };
 
+// clear cart
+export var clearCart = () => {
+ return (dispatch, getState) => {
+
+  shopifyAPI.cart.clearLineItems()
+    .then(function (updatedCart) {
+      let updatedCartItems = updatedCart.lineItems;
+      dispatch({ type: 'UPDATE_CART_ITEMS', updatedCartItems });
+      dispatch(updateCartSubtotal());
+    })
+    .catch(function(errors) {
+      console.log('coundnt remove items: ', errors);
+    })
+  }
+}
+
 // update cart subtotal
 export var updateCartSubtotal = () => {
   return (dispatch, getState) => {
