@@ -221,3 +221,12 @@ input[type=number]::-webkit-outer-spin-button {
   color: $red;
   cursor: pointer;
 }
+
+.btn_clear {
+  color: white;
+  background: black;
+  border-color: lighten(black, 20%);
+  max-width: 20%;
+  width: 20%;
+  margin: 5px;
+}
