@@ -42,7 +42,7 @@
 
   .collection-item{
     @include flex-grid-column(6, 20);
-    @include breakpoint(large){
+    @include breakpoint(large) {
       @include flex-grid-column(3, 20);
     }
 
@@ -69,7 +69,7 @@
       background-position: center center;
       background-size: contain;
       background-repeat: no-repeat;
-      @include breakpoint(medium){
+      @include breakpoint(medium) {
         height: rem-calc(200);
       }
     }

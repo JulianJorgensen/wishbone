@@ -15,7 +15,7 @@ import NewsItem from 'NewsItem';
 import PageItem from 'PageItem';
 
 import ReactGA from 'react-ga';
-// ReactGA.initialize('UA-6241825-9'); // initialize Google Analytics
+ReactGA.initialize('UA-6241825-9'); // initialize Google Analytics
 
 function logPageView(location) {
   ReactGA.set({ page: location.pathname });

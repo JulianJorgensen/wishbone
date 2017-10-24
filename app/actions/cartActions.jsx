@@ -1,5 +1,3 @@
-import shopifyAPI from 'shopifyAPI';
-
 export var startAddorUpdateCartItem = (productVariant, quantity) => {
   return (dispatch, getState) => {
     let cart = getState().cart;

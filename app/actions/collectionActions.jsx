@@ -1,3 +1,4 @@
+import 'whatwg-fetch';
 import shopifyAPI from 'shopifyAPI';
 
 export var setActiveCollection = (collection) => {
