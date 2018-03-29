@@ -22,6 +22,9 @@ store.subscribe(() => {
 store.dispatch(productActions.startAddProducts());
 store.dispatch(collectionActions.startAddCollections());
 
+// fetch content
+shopifyAPI.fetchPageContent();
+
 // create shopify cart instance based on last session (based on localStorage)
 shopifyAPI.createCart().then((localCart) => {
   store.dispatch({ type: 'SET_INITIAL_CART_STATE', localCart });
