@@ -29,7 +29,7 @@ class Index extends React.Component {
         <div>
           <div className="homepage-hero">
             <img src="/images/good-luck-good-cause.png" />
-            <div className="subheader">Customize your lucky Wishbone Hat. 50% of profits go to charity you choose.</div>
+            <div className="subheader">Customize your lucky Wishbone Hat. For every hat sold, $5 will go to a charity you choose.</div>
             <Link to="/hats/" className="button hollow">View Hat Styles</Link>
             <Link href="#hats" className="arrow-down"><i className="fa fa-angle-down" aria-hidden="true"></i></Link>
           </div>

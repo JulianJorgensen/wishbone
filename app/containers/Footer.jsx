@@ -37,7 +37,6 @@ class Footer extends React.Component {
             <div className="footer-column">
               <div className="footer-nav-headline">About Wishbone Hats</div>
               <div className="body" dangerouslySetInnerHTML={{__html: this.state.aboutContent}}></div>
-
             </div>
 
             <div className="footer-column" id="footer-socialmedia">

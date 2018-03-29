@@ -27,6 +27,10 @@ class Cart extends React.Component {
     window.open(shopifyAPI.cart.checkoutUrl, '_self');
   }
 
+  handleClearCart() {
+    this.dispatch(actions.clearCart());
+  }
+
   render() {
     let { isOpen, lineItems, lineItemCount, subtotal } = this.props.cart;
     let renderLineItems = () => {
@@ -55,6 +59,9 @@ class Cart extends React.Component {
           <div className="cart-item-container cart-section">
             <div>
               {renderLineItems()}
+            </div>
+            <div>
+              <button onClick={() => this.handleClearCart()} className="btn btn_clear">Clear</button>;
             </div>
           </div>
 
