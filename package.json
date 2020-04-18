@@ -87,6 +87,6 @@
     "karma-webpack": "^2.0.13",
     "mocha": "^3.2.0",
     "node-sass": "^4.13.1",
-    "webpack-dev-server": "^2.11.5"
+    "webpack-dev-server": "^3.1.11"
   }
 }
