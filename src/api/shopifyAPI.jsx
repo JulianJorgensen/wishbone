@@ -18,8 +18,7 @@ class shopifyAPI {
   }
 
   fetchPageContent(){
-    return axios.get('http://localhost:3000/shopify/get-pages').then((response) => {
-        console.log('resp', response)
+    return axios.get('/shopify/get-pages').then((response) => {
       this.pages = response.data;
     })
     .catch(error => console.log('Error: ', error));

@@ -11,8 +11,8 @@ require('dotenv').config();
 // Establish connection with Shopify
 const shopify = new Shopify({
   shopName: 'wishbone-hats',
-  apiKey: '918a5f8594e3cdcc480264dda7cf8de8',
-  password: '94b9eb03e98b0cb429418867b99c463e'
+  apiKey: process.env.SHOPIFY_API_KEY,
+  password: process.env.SHOPIFY_API_KEY_PASSWORD
 });
 
 
