@@ -31,13 +31,11 @@
     "shopify-buy": "^0.6.1"
   },
   "scripts": {
+    "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:prod": "NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start": "node server.js",
-    "heroku-postbuild": "npm run build:prod"
-},
+    "eject": "react-scripts eject"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
