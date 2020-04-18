@@ -7,7 +7,7 @@ let logger = require('morgan');
 app.set('port', (process.env.PORT || 3000));
 
 // Set static folder
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/build'));
 
 // Setting up basic middleware for all Express requests
 app.use(logger('dev')); // Log requests to API using morgan
@@ -18,7 +18,7 @@ app.use('/shopify', shopify);
 
 // Serve the index file
 app.get('*', function(request, response) {
-  response.sendFile(__dirname + '/public/index.html');
+  response.sendFile(__dirname + '/build/index.html');
 });
 
 // Listen to port
